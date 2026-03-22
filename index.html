@@ -268,7 +268,784 @@
         .brands {
             text-align: center;
             background-color: var(--soft-pink);
-            padding: 4rem       if (e.target == modal) {
+            padding: 4rem 0;
+        }
+
+        .brands h3 {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--primary-dark);
+        }
+
+        .brand-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem; 
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            max-width: 150px;
+        }
+
+        .brand-logo.large {
+            height: 70px;
+            max-width: 220px;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Projects Section --- */
+        .projects-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .projects-header h2 {
+            font-size: 3rem;
+            color: var(--primary-dark);
+        }
+        
+        .project-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--vivid-pink);
+            padding-left: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card::after {
+            content: '\f04b'; 
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 3rem;
+            color: white;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .project-card:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: #000;
+            position: relative;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .project-caption {
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .project-caption h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* --- Rates Section --- */
+        .rates {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .rates h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .rates p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        /* --- VIDEO MODAL (Lightbox) --- */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .video-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            max-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(255,255,255,0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #f1f1f1;
+            font-size: 35px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 10001;
+            padding: 10px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .footer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--soft-pink);
+            line-height: 1.2;
+        }
+
+        .contact-block {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .footer-email {
+            font-size: 2.2rem; 
+            color: #ffffff !important;
+            text-decoration: none;
+            border-bottom: none;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-email:hover {
+            color: var(--vivid-pink) !important;
+        }
+
+        .footer-socials {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .footer-socials a {
+            font-size: 2rem;
+            color: var(--soft-pink);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-socials a:hover {
+            color: var(--vivid-pink);
+            transform: translateY(-3px);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .section-padding { padding: 4rem 0; }
+            
+            /* Mobile Hero Anpassung: Image2 als Background, Image3 weg */
+            .hero {
+                background: linear-gradient(rgba(250, 245, 247, 0.7), rgba(250, 245, 247, 0.7)), url('Image2.jpg') center/cover no-repeat;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-images { display: none; } /* Image2 und Image3 Container ausblenden */
+            .hero-content { margin: 0 auto; }
+            .hero-tagline { margin-left: auto; margin-right: auto; }
+            .social-links { justify-content: center; }
+
+            .hero-content h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-img-container { height: 400px; order: 1; border-radius: 12px; }
+            .about-text { order: 2; text-align: center; }
+            .category-title { text-align: center; border-left: none; border-bottom: 3px solid var(--vivid-pink); display: inline-block; padding-bottom: 5px; padding-left: 0; }
+            .project-category { text-align: center; }
+            .brand-list { gap: 1.5rem; }
+            .brand-logo { height: 35px; }
+            .brand-logo.large { height: 50px; }
+            .footer h2 { font-size: 2rem; }
+            .footer-email { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .social-btn { padding: 0.6rem 1rem; font-size: 0.8rem; }
+            .close-modal { top: -50px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#trusted">Trusted by</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#rates">Rates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero section-padding">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="gsap-hero-text">Lia Diotima</h1>
+                    <div class="hero-subtitle gsap-hero-text">UGC Content Creator</div>
+                    <p class="hero-tagline gsap-hero-text">
+                        Authentic Storytelling & High-Performance Content for your Social Media.
+                    </p>
+                    
+                    <div class="social-links gsap-hero-text">
+                        <a href="https://www.tiktok.com/@liadiotima.ugc" target="_blank" class="social-btn">
+                            <i class="fa-brands fa-tiktok"></i> TikTok
+                        </a>
+                        <a href="https://www.instagram.com/liadiotima.ugc/" target="_blank" class="social-btn">
+                            <i class="fa-brands fa-instagram"></i> Instagram
+                        </a>
+                        <a href="mailto:liadiotima.ugc@gmail.com" class="social-btn">
+                            <i class="fa-regular fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-images">
+                    <img src="Image2.jpg" alt="Lia Diotima Aesthetic" class="hero-img img-2" onerror="this.src='https://placehold.co/320x450/pink/white?text=Image2'">
+                    <img src="Image3.jpg" alt="Lia Diotima Portrait" class="hero-img img-3" onerror="this.src='https://placehold.co/280x380/purple/white?text=Image3'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img-container gsap-about-img">
+                    <img src="Image1.png" alt="About Lia" onerror="this.src='https://placehold.co/600x800/2e1a2b/white?text=Image1'">
+                </div>
+
+                <div class="about-text">
+                    <h2 class="gsap-about-text">About Me</h2>
+                    <div class="gsap-about-text">
+                        <p>
+                            Hi, I’m Lia, and I’ve been creating content since I was 14. What started as pure intuition and a lot of ADHD-driven creativity quickly grew into a community of over 250,000 followers.
+                        </p>
+                        <p>
+                            Over the past 1.5 years, I’ve turned that passion into professional UGC, combining nearly a decade of digital experience with my background in Psychology.
+                        </p>
+                        <p>
+                            I don’t just create content. I create connection. By understanding how people think, feel, and scroll, I produce scroll-stopping UGC that feels authentic, relatable, and impactful. Every piece of content is designed to capture attention, spark emotion, and build genuine trust with your audience.
+                        </p>
+                        <p>
+                            What I love most is the creative process. I enjoy turning a brand’s vision into engaging content that feels human, natural, and true to its values while still driving real results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS SECTION -->
+    <section id="trusted" class="brands">
+        <div class="container">
+            <h3>Trusted by brands including</h3>
+            <div class="brand-list gsap-brands">
+                <img src="anualogo.png" alt="Anua" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Anua</span>')">
+                <img src="batistelogo.png" alt="Batiste" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Batiste</span>')">
+                <img src="boltlogo.png" alt="Bolt" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Bolt</span>')">
+                <img src="emmalogo.png" alt="Emma" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Emma</span>')">
+                <img src="ewzlogo.png" alt="EWZ" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>EWZ</span>')">
+                <img src="halaralogo.png" alt="Halara" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Halara</span>')">
+                <img src="herologo.png" alt="Hero Cosmetics" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Hero Cosmetics</span>')">
+                <img src="ifolorlogo.png" alt="Ifolor" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Ifolor</span>')">
+                <img src="jevaanilogo.png" alt="Jevaani" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Jevaani</span>')">
+                <img src="Pflegewegweiserlogo.png" alt="Pflegewegweiser" class="brand-logo large" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Pflegewegweiser</span>')">
+                <img src="Spiriglogo.png" alt="Spirig" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Spirig</span>')">
+                <img src="studyflashlogo.png" alt="Studyflash" class="brand-logo large" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Studyflash</span>')">
+                <img src="veluralogo.png" alt="Velura" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Velura</span>')">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="videos" class="projects section-padding">
+        <div class="container">
+            <div class="projects-header">
+                <h2>Recent Projects</h2>
+                <p style="opacity: 0.6; margin-top: 10px;">Click a video to watch in full screen with sound</p>
+            </div>
+            
+            <!-- Category 1: Recent Collaborations -->
+            <div class="project-category">
+                <h4 class="category-title">Recent Collaborations</h4>
+                <div class="projects-grid">
+                    <div class="project-card gsap-project-card" data-video-src="Bolt.mov">
+                        <div class="video-wrapper">
+                            <video src="Bolt.mov" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Bolt"></video>
+                        </div>
+                        <div class="project-caption"><h4>Bolt</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="pflegewegweiser.mov">
+                        <div class="video-wrapper">
+                            <video src="pflegewegweiser.mov" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Pflegewegweiser"></video>
+                        </div>
+                        <div class="project-caption"><h4>Pflegewegweiser</h4></div>
+                    </div>
+                    
+                    <!-- Hier wurde Firmoo zu Capsula Anna geändert (Pfad korrigiert auf Firmoo.mov) -->
+                    <div class="project-card gsap-project-card" data-video-src="Firmoo.mov">
+                        <div class="video-wrapper">
+                            <video src="Firmoo.mov" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Capsula+Anna"></video>
+                        </div>
+                        <div class="project-caption"><h4>Capsula Anna</h4></div>
+                    </div>
+                    
+                    <!-- Batiste Video verschoben von Other Work -->
+                    <div class="project-card gsap-project-card" data-video-src="haircare.mp4">
+                        <div class="video-wrapper">
+                            <video src="haircare.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Batiste"></video>
+                        </div>
+                        <div class="project-caption"><h4>Batiste</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="ifolor.mp4">
+                        <div class="video-wrapper">
+                            <video src="ifolor.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Ifolor"></video>
+                        </div>
+                        <div class="project-caption"><h4>Ifolor</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="worklife.mp4">
+                        <div class="video-wrapper">
+                            <video src="worklife.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Studyflash+AI"></video>
+                        </div>
+                        <div class="project-caption"><h4>Studyflash AI</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="anua.mp4">
+                        <div class="video-wrapper">
+                            <video src="anua.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Anua+(EN)"></video>
+                        </div>
+                        <div class="project-caption"><h4>Anua (EN)</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="EWZ.mp4">
+                        <div class="video-wrapper">
+                            <video src="EWZ.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=EWZ"></video>
+                        </div>
+                        <div class="project-caption"><h4>EWZ</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="velura.mp4">
+                        <div class="video-wrapper">
+                            <video src="velura.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Velura"></video>
+                        </div>
+                        <div class="project-caption"><h4>Velura</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="halara.mp4">
+                        <div class="video-wrapper">
+                            <video src="halara.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Halara+(DE)"></video>
+                        </div>
+                        <div class="project-caption"><h4>Halara (DE)</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="chesapeakebay.mp4">
+                        <div class="video-wrapper">
+                            <video src="chesapeakebay.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Chesapeake+bay"></video>
+                        </div>
+                        <div class="project-caption"><h4>Chesapeake bay</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="emmaskissen.mp4">
+                        <div class="video-wrapper">
+                            <video src="emmaskissen.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Emmas+Kissen"></video>
+                        </div>
+                        <div class="project-caption"><h4>Emmas Kissen</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="jevaani.mp4">
+                        <div class="video-wrapper">
+                            <video src="jevaani.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Jevaani"></video>
+                        </div>
+                        <div class="project-caption"><h4>Jevaani</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="omari21.mp4">
+                        <div class="video-wrapper">
+                            <video src="omari21.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Omari+21"></video>
+                        </div>
+                        <div class="project-caption"><h4>Omari 21</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="mightypatches.mp4">
+                        <div class="video-wrapper">
+                            <video src="mightypatches.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Mighty+patches"></video>
+                        </div>
+                        <div class="project-caption"><h4>Mighty patches</h4></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Other Work -->
+            <div class="project-category">
+                <h4 class="category-title">Other Work</h4>
+                <div class="projects-grid">
+                    <div class="project-card gsap-project-card" data-video-src="airbrush.mp4">
+                        <div class="video-wrapper">
+                            <video src="airbrush.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Makeup"></video>
+                        </div>
+                        <div class="project-caption"><h4>Makeup</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="gymfit.mp4">
+                        <div class="video-wrapper">
+                            <video src="gymfit.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Gym+outfit"></video>
+                        </div>
+                        <div class="project-caption"><h4>Gym outfit</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="date.mp4">
+                        <div class="video-wrapper">
+                            <video src="date.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Date+night"></video>
+                        </div>
+                        <div class="project-caption"><h4>Date night</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="grwm.mp4">
+                        <div class="video-wrapper">
+                            <video src="grwm.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=GRWM"></video>
+                        </div>
+                        <div class="project-caption"><h4>GRWM</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="skincare.mp4">
+                        <div class="video-wrapper">
+                            <video src="skincare.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Skincare"></video>
+                        </div>
+                        <div class="project-caption"><h4>Skincare</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="mentalhealth.mp4">
+                        <div class="video-wrapper">
+                            <video src="mentalhealth.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Mental+health"></video>
+                        </div>
+                        <div class="project-caption"><h4>Mental health</h4></div>
+                    </div>
+                    <div class="project-card gsap-project-card" data-video-src="walkingpad.mp4">
+                        <div class="video-wrapper">
+                            <video src="walkingpad.mp4" autoplay muted loop playsinline poster="https://placehold.co/400x700/pink/white?text=Walking+Pad"></video>
+                        </div>
+                        <div class="project-caption"><h4>Walking Pad</h4></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RATES SECTION -->
+    <section id="rates" class="rates section-padding">
+        <div class="container">
+            <h2 class="gsap-rates">Rates</h2>
+            <div class="gsap-rates">
+                <p>
+                    My prices are tailored to your specific needs — such as content type, hooks & CTAs, number of videos, and usage rights.
+                </p>
+                <p>
+                    Please do not hesitate to reach out with your project details, and I’ll be happy to put together a personalized quote for you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO MODAL -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <video id="modalVideoPlayer" controls playsinline>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2>Let's Connect & Collaborate</h2>
+            
+            <div class="contact-block">
+                <span class="contact-label">Contact:</span>
+                <a href="mailto:liadiotima.ugc@gmail.com" class="footer-email">
+                    liadiotima.ugc@gmail.com
+                </a>
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://www.tiktok.com/@liadiotima.ugc" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/liadiotima.ugc/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Lia Diotima. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        // 1. Initialize Lenis (Smooth Scrolling)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Handle Anchor Links with Lenis
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                lenis.scrollTo(this.getAttribute('href'));
+            });
+        });
+
+        // 3. Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- Animations ---
+        const tl = gsap.timeline();
+        
+        // Hero
+        tl.from(".gsap-hero-text", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        })
+        .from(".hero-img", {
+            y: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.3,
+            ease: "power2.out"
+        }, "-=0.8");
+
+        // About
+        gsap.from(".gsap-about-img", {
+            scrollTrigger: {
+                trigger: ".about",
+                start: "top 80%",
+            },
+            x: -30,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from(".gsap-about-text", {
+            scrollTrigger: {
+                trigger: ".about",
+                start: "top 75%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power3.out"
+        });
+
+        // Brands 
+        gsap.from(".brand-logo", {
+            scrollTrigger: {
+                trigger: ".brands",
+                start: "top 90%",
+            },
+            y: 20,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "back.out(1.7)"
+        });
+
+        // Project Animation
+        const projectGrids = document.querySelectorAll(".projects-grid");
+        projectGrids.forEach(grid => {
+            gsap.from(grid.querySelectorAll(".gsap-project-card"), {
+                scrollTrigger: {
+                    trigger: grid,
+                    start: "top 85%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+        });
+
+        // Rates
+        gsap.from(".gsap-rates", {
+            scrollTrigger: {
+                trigger: ".rates",
+                start: "top 85%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+        // Footer
+        gsap.from(".footer h2, .contact-block, .footer-socials", {
+            scrollTrigger: {
+                trigger: ".footer",
+                start: "top 90%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+        // --- VIDEO MODAL LOGIC ---
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideoPlayer');
+        const closeBtn = document.querySelector('.close-modal');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        // Open Modal
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoSrc = card.getAttribute('data-video-src');
+                if (videoSrc) {
+                    modalVideo.src = videoSrc;
+                    modal.classList.add('active');
+                    modalVideo.muted = false;
+                    modalVideo.play().catch(e => console.log("Autoplay blocked:", e));
+                    lenis.stop();
+                }
+            });
+        });
+
+        // Close Modal Function
+        function closeModal() {
+            modal.classList.remove('active');
+            modalVideo.pause();
+            modalVideo.src = "";
+            lenis.start();
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+
+        window.addEventListener('click', (e) => {
+            if (e.target == modal) {
                 closeModal();
             }
         });
