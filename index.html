@@ -62,6 +62,10 @@
             list-style: none;
         }
 
+        /* --- Utilities --- */
+        .desktop-only { display: block; }
+        .mobile-only { display: none !important; }
+
         /* --- Components --- */
         .btn-primary {
             display: inline-flex;
@@ -805,6 +809,9 @@
         }
 
         @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+
             .nav-links {
                 gap: 1.5rem;
                 font-size: 0.7rem;
@@ -812,7 +819,7 @@
             }
             .section-padding { padding: 5rem 0; }
             
-            /* HERO FIXES MOBILE - Diagonal Stack Layout */
+            /* HERO FIXES MOBILE - Keeping Desktop Alignments */
             .hero {
                 padding-top: 100px; 
                 min-height: auto;
@@ -829,40 +836,33 @@
             .btn-primary { padding: 1rem 2rem; font-size: 0.85rem; }
             .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
 
-            /* Modern Editorial Mobile Stack */
+            /* Modern Editorial Mobile Layout */
             .hero-lockup {
-                flex-direction: column;
+                flex-direction: row; 
                 gap: 0;
-                padding: 0 1rem;
-                transform: translateX(0); /* Zurücksetzen der Verschiebung auf Mobile */
+                padding: 0;
+                transform: translateX(-5vw); /* Leicht nach links geschoben wie beim Desktop */
             }
             .hero-image-wrapper { 
-                height: 45vh;
-                margin: -2rem 0; /* Creates the overlap effect */
+                height: 50vh; /* Bild bleibt schön gross im Zentrum */
+                margin: 0; 
                 z-index: 2;
             } 
             
-            /* Reset absolute positioning for mobile stack */
-            .hero-title-part {
-                position: relative;
-                top: auto;
-                bottom: auto;
-                height: auto;
-                margin-top: 0;
-                margin-bottom: 0;
-                z-index: 3; /* bring back to front for mobile */
-            }
-            .hero-title-part.left {
-                right: auto;
-                margin-right: 0;
-                align-self: flex-start;
-                margin-left: 5%;
-            }
-            .hero-title-part.right {
-                left: auto;
-                margin-left: 0;
-                align-self: flex-end;
-                margin-right: 5%;
+            .hero-title-part.mobile-only {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin-top: auto;
+                margin-bottom: auto;
+                left: 50%;
+                margin-left: 2vw; /* Platziert den Text rechts neben der Bildmitte */
+                height: fit-content;
+                text-align: left;
+                z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
+                font-size: clamp(3rem, 14vw, 5rem); /* "in klein" */
+                text-transform: lowercase; /* "in klein" */
+                line-height: 0.9;
             }
             
             /* Anpassungen Mobile About-Bereich */
@@ -891,14 +891,11 @@
 
         @media (max-width: 480px) {
             .hero-image-wrapper { 
-                height: 40vh; 
-                margin: -1.5rem 0; 
+                height: 45vh; 
             }
-            .hero-title-part { 
-                font-size: clamp(3.5rem, 18vw, 6rem); 
+            .hero-title-part.mobile-only { 
+                font-size: clamp(2.8rem, 15vw, 4rem); 
             }
-            .hero-title-part.left { margin-left: 2%; }
-            .hero-title-part.right { margin-right: 2%; }
             .close-modal { top: -50px; right: 10px; }
         }
     </style>
@@ -951,13 +948,16 @@
             <!-- Center Stage -->
             <div class="hero-center-stage">
                 <div class="hero-lockup">
-                    <h1 class="hero-title-part left gsap-hero-title">Lia</h1>
+                    <h1 class="hero-title-part left desktop-only gsap-hero-title">Lia</h1>
                     
                     <div class="hero-image-wrapper gsap-hero-img">
                         <img src="Image4.png" alt="Lia Diotima Premium UGC Content Creator" onerror="this.src='https://placehold.co/800x1200/eaddd7/1e1a1d?text=Image+4.png'">
                     </div>
                     
-                    <h1 class="hero-title-part right gsap-hero-title">Diotima</h1>
+                    <h1 class="hero-title-part right desktop-only gsap-hero-title">Diotima</h1>
+
+                    <!-- Mobile-Only Title -->
+                    <h1 class="hero-title-part mobile-only gsap-hero-title">lia<br>diotima</h1>
                 </div>
             </div>
 
