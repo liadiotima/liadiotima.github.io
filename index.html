@@ -838,36 +838,45 @@
 
             /* Modern Editorial Mobile Layout */
             .hero-lockup {
-                flex-direction: row; 
-                justify-content: flex-start; /* Image to the left edge */
-                gap: 0;
-                padding: 0;
+                display: block; /* Entfernt jegliches Flexbox-Zentrieren */
+                width: 100%;
+                height: 50vh; /* Feste Höhe, da das Bild jetzt absolute ist */
                 transform: none; /* Reset transform */
-                margin-left: -2rem; /* Negates the container padding to touch the screen edge */
+                margin: 0;
+                padding: 0;
+                position: relative;
             }
+            
             .hero-image-wrapper { 
-                height: 50vh; /* Bild bleibt schön gross im Zentrum */
+                position: absolute;
+                left: -2rem; /* Hebt das 2rem Padding des .container auf -> Bild ist exakt am Bildschirmrand */
+                bottom: 0;
+                height: 100%; 
+                width: 65vw; /* Feste Box-Breite am linken Rand */
                 margin: 0; 
                 z-index: 2;
-                justify-content: flex-start; /* NEU: Bild an den linken Rand des Wrappers packen */
+                display: block; 
             } 
+            
             .hero-image-wrapper img {
-                object-position: left bottom; /* NEU: Pixel des Bildes absolut linksbündig */
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: left bottom; /* Zwingt die Bildpixel absolut in die linke Ecke der Box */
+                display: block;
             }
             
             .hero-title-part.mobile-only {
                 position: absolute;
-                top: 0;
-                bottom: 0;
-                margin-top: auto;
-                margin-bottom: auto;
-                left: 40%; /* Position text on the right next to the image */
+                top: 50%;
+                transform: translateY(-50%);
+                left: 40%; /* Text neben das Bild platzieren */
                 margin-left: 0;
                 height: fit-content;
                 text-align: left;
                 z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
-                font-size: clamp(3rem, 14vw, 5rem); /* "in klein" */
-                text-transform: lowercase; /* "in klein" */
+                font-size: clamp(3rem, 14vw, 5rem); 
+                text-transform: lowercase; 
                 line-height: 0.9;
             }
             
@@ -896,7 +905,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero-image-wrapper { 
+            .hero-lockup { 
                 height: 45vh; 
             }
             .hero-title-part.mobile-only { 
