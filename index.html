@@ -62,6 +62,10 @@
             list-style: none;
         }
 
+        /* Visibility Utilities for Mobile/Desktop Switching */
+        .desktop-only { display: block; }
+        .mobile-only { display: none !important; }
+
         /* --- Components --- */
         .btn-primary {
             display: inline-flex;
@@ -325,37 +329,19 @@
             background-color: var(--surface-color); 
             position: relative;
             z-index: 10; 
-            padding-bottom: 0 !important; /* Macht den Container bündig zum nächsten Element */
+            padding-bottom: 0 !important; 
         }
 
+        /* Grid wurde durch ein Block-Layout ersetzt, da Bild 6 entfernt wurde */
         .about-grid {
-            display: grid;
-            grid-template-columns: 6fr 5fr; 
-            gap: 6rem;
-            align-items: flex-end; /* Elemente unten bündig ausrichten */
-        }
-
-        .about-img-container {
-            position: relative;
-            height: auto;
-            border-radius: 0;
-            overflow: visible;
-            box-shadow: none;
-            order: 2; 
-            transform: scale(1.2); 
-            transform-origin: right bottom; /* Verankert das Bild bei der Vergrößerung unten */
-        }
-
-        .about-img-container img {
-            width: 115%;
-            height: auto; 
-            object-fit: cover;
-            display: block;
+            display: block; 
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .about-text {
-            padding-bottom: 8rem; /* Stellt das Layout-Padding für den Textteil wieder her */
-            order: 1; 
+            padding-bottom: 6rem; 
+            text-align: center; /* Mittige Ausrichtung, da das Bild links fehlt */
         }
 
         .about-text h2 {
@@ -370,7 +356,8 @@
         .about-text h2::after {
             content: '';
             position: absolute;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%); /* Zentrierte Linie */
             bottom: -15px;
             width: 60px;
             height: 2px;
@@ -383,6 +370,9 @@
             margin-bottom: 1.8rem;
             color: var(--text-muted);
             font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .about-text p.quote-text {
@@ -392,13 +382,14 @@
             font-family: var(--font-display);
         }
 
-        /* Feature Spalten (horizontal links vom Bild) */
+        /* Feature Spalten */
         .about-features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 3rem;
+            margin-top: 4rem;
             align-items: start;
+            text-align: center;
         }
 
         .feature-item i {
@@ -772,19 +763,13 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            /* Auf Tablets brechen wir das Layout früher um, da die 3 Icons Platz brauchen */
-            .about-grid { gap: 4rem; grid-template-columns: 1fr; }
-            .about-img-container { 
-                height: auto; 
-                max-width: 600px; 
-                margin: 0 auto; 
-                transform: scale(1); /* Vergrößerung auf kleinen Screens zurücknehmen */
-                order: -1; 
-            }
-            .about-text { order: 2; padding-bottom: 6rem; }
+            .about-features { gap: 2rem; }
         }
 
         @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+
             .nav-links {
                 gap: 1.5rem;
                 font-size: 0.7rem;
@@ -792,8 +777,9 @@
             }
             .section-padding { padding: 5rem 0; }
             
+            /* HERO FIXES MOBILE */
             .hero {
-                padding-top: 90px;
+                padding-top: 130px; /* VERGRÖSSERT: Verhindert Überschneidung mit Taskbar */
                 min-height: auto;
             }
             .hero-top-bar {
@@ -812,24 +798,29 @@
                 align-items: center;
             }
             
-            .hero-image-wrapper { width: 95vw; } 
-            .hero-title-part { font-size: 33vw; }
-            .hero-title-part.left { margin-right: -25vw; }
-            .hero-title-part.right { margin-left: -25vw; }
-            
-            /* Anpassungen Mobile für About-Bild und Text */
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .about-img-container { 
-                height: auto; 
-                width: 100%;
-                margin: 0;
-                order: -1; 
-                border-radius: 24px; 
-                overflow: hidden; 
-                transform: scale(1);
+            /* LIA DIOTIMA BILD & TEXT FIX MOBILE */
+            .hero-lockup {
+                display: flex;
+                flex-direction: row;
+                justify-content: center; /* Bild und Text nebeneinander zentrieren */
+                align-items: center;
+                padding-left: 2vw; /* Ein wenig Abstand nach links */
             }
-            .about-text { text-align: center; padding-bottom: 5rem; }
-            .about-text h2::after { left: 50%; transform: translateX(-50%); }
+            .hero-image-wrapper { 
+                width: 55vw; /* Bild nimmt ca. die Hälfte ein */
+                min-width: unset;
+                margin: 0;
+            } 
+            .hero-title-part.mobile-only {
+                font-size: 20vw; /* Große, passende Schrift */
+                line-height: 0.9;
+                text-align: left;
+                margin-left: -8vw; /* Text zieht sich stylisch leicht über das Bild */
+                z-index: 5;
+            }
+            
+            /* Anpassungen Mobile About-Bereich (ohne Bild) */
+            .about-text { padding-bottom: 4rem; }
             
             .about-features {
                 grid-template-columns: 1fr; /* Icons stapeln auf kleinen Screens */
@@ -853,7 +844,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title-part { font-size: 33vw; }
+            .hero-title-part.mobile-only { font-size: 22vw; margin-left: -10vw; }
             .close-modal { top: -50px; right: 10px; }
         }
     </style>
@@ -906,13 +897,19 @@
             <!-- Center Stage -->
             <div class="hero-center-stage">
                 <div class="hero-lockup">
-                    <h1 class="hero-title-part left gsap-hero-title">Lia</h1>
+                    <!-- Desktop Text Left -->
+                    <h1 class="hero-title-part left desktop-only gsap-hero-title">Lia</h1>
                     
+                    <!-- Bild -->
                     <div class="hero-image-wrapper gsap-hero-img">
                         <img src="Image4.png" alt="Lia Diotima Premium UGC Content Creator" onerror="this.src='https://placehold.co/1200x800/eaddd7/1e1a1d?text=Image+4.png'">
                     </div>
                     
-                    <h1 class="hero-title-part right gsap-hero-title">Diotima</h1>
+                    <!-- Desktop Text Right -->
+                    <h1 class="hero-title-part right desktop-only gsap-hero-title">Diotima</h1>
+
+                    <!-- Mobile Text (Rechts neben dem Bild mit Zeilenumbruch) -->
+                    <h1 class="hero-title-part mobile-only gsap-hero-title">Lia<br>Diotima</h1>
                 </div>
             </div>
 
@@ -924,9 +921,7 @@
         <div class="container">
             <div class="about-grid">
                 
-                <div class="about-img-container gsap-about-img">
-                    <img src="image6.png" alt="Lia Diotima" onerror="this.src='https://placehold.co/600x800/f4f0ef/1e1a1d?text=Portrait'">
-                </div>
+                <!-- Bild image6.png wurde entfernt -->
 
                 <div class="about-text">
                     <h2 class="gsap-about-text">The Creator behind the lens</h2>
@@ -942,7 +937,7 @@
                         </p>
                     </div>
 
-                    <!-- 3 Feature Spalten anstelle des letzten Absatzes -->
+                    <!-- 3 Feature Spalten -->
                     <div class="about-features gsap-about-text">
                         <div class="feature-item">
                             <i class="fa-solid fa-brain"></i>
@@ -1248,18 +1243,7 @@
             ease: "power2.out"
         }, "-=0.8");
 
-        // About
-        gsap.from(".gsap-about-img", {
-            scrollTrigger: {
-                trigger: ".about",
-                start: "top 80%",
-            },
-            y: 40,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power3.out"
-        });
-
+        // About - (Animatio für Bild entfernt)
         gsap.from(".gsap-about-text", {
             scrollTrigger: {
                 trigger: ".about",
