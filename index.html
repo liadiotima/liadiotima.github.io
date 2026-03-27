@@ -280,8 +280,6 @@
             justify-content: center;
             width: 100%;
             position: relative; 
-            /* Verschiebt das gesamte Element (Bild + Text) nach links, 
-               um den optischen Schwerpunkt auszugleichen */
             transform: translateX(-14vw);
         }
 
@@ -296,7 +294,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            pointer-events: none; /* Let clicks pass through transparent boundaries */
+            pointer-events: none; 
         }
 
         .hero-image-wrapper img {
@@ -322,7 +320,7 @@
             font-weight: 400;
             color: var(--primary-dark);
             text-shadow: 0 15px 35px rgba(251, 250, 249, 0.9);
-            z-index: 1; /* Editorial Look: Behind the transparent image bounds */
+            z-index: 1; 
             white-space: nowrap; 
         }
 
@@ -837,32 +835,40 @@
             .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
 
             /* Modern Editorial Mobile Layout */
+            .hero-center-stage {
+                justify-content: flex-start; /* Zwingt den gesamten Block an den linken Rand */
+            }
+
             .hero-lockup {
-                display: block; /* Entfernt jegliches Flexbox-Zentrieren */
-                width: 100%;
-                height: 50vh; /* Feste Höhe, da das Bild jetzt absolute ist */
-                transform: none; /* Reset transform */
-                margin: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start; /* Bild im Container nach links drücken */
+                align-items: flex-end;
+                width: calc(100% + 2rem); 
+                height: 55vh; /* Schön gross! */
+                min-height: 400px;
+                transform: none;
+                margin-left: -2rem; /* Gleicht genau das Padding des .containers aus */
                 padding: 0;
                 position: relative;
             }
             
             .hero-image-wrapper { 
-                position: absolute;
-                left: -2rem; /* Hebt das 2rem Padding des .container auf -> Bild ist exakt am Bildschirmrand */
-                bottom: 0;
+                position: relative;
                 height: 100%; 
-                width: 65vw; /* Feste Box-Breite am linken Rand */
+                width: auto; /* Bild holt sich die Breite dynamisch über die Höhe */
                 margin: 0; 
                 z-index: 2;
-                display: block; 
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-start; 
             } 
             
             .hero-image-wrapper img {
-                width: 100%;
                 height: 100%;
+                width: auto;
                 object-fit: contain;
-                object-position: left bottom; /* Zwingt die Bildpixel absolut in die linke Ecke der Box */
+                object-position: left bottom; /* Pinnt das Bild hart an den linken Rand des Wrappers */
                 display: block;
             }
             
@@ -870,12 +876,12 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                left: 40%; /* Text neben das Bild platzieren */
+                left: 35%; /* Positioniert den Text leicht überlappend neben dem Bild */
                 margin-left: 0;
                 height: fit-content;
                 text-align: left;
                 z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
-                font-size: clamp(3rem, 14vw, 5rem); 
+                font-size: clamp(3.5rem, 16vw, 5.5rem); 
                 text-transform: lowercase; 
                 line-height: 0.9;
             }
@@ -906,10 +912,11 @@
 
         @media (max-width: 480px) {
             .hero-lockup { 
-                height: 45vh; 
+                height: 50vh; 
+                min-height: 380px;
             }
             .hero-title-part.mobile-only { 
-                font-size: clamp(2.8rem, 15vw, 4rem); 
+                font-size: clamp(3rem, 15vw, 4.5rem); 
             }
             .close-modal { top: -50px; right: 10px; }
         }
