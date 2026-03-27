@@ -819,7 +819,7 @@
             
             /* HERO FIXES MOBILE - Keeping Desktop Alignments */
             .hero {
-                padding-top: 100px; 
+                padding-top: 160px; /* ERHÖHT: Verhindert Überlappen des Textes durch die Nav-Taskbar */
                 min-height: auto;
             }
             .hero-top-bar {
@@ -836,39 +836,36 @@
 
             /* Modern Editorial Mobile Layout */
             .hero-center-stage {
-                justify-content: flex-start; /* Zwingt den gesamten Block an den linken Rand */
+                justify-content: flex-start;
             }
 
             .hero-lockup {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start; /* Bild im Container nach links drücken */
-                align-items: flex-end;
-                width: calc(100% + 2rem); 
-                height: 55vh; /* Schön gross! */
+                display: block; /* Flexbox deaktiviert, erzwingt absolute Positionierung */
+                width: calc(100% + 4rem); /* Gleicht das Container Padding komplett aus */
+                height: 55vh; 
                 min-height: 400px;
                 transform: none;
-                margin-left: -2rem; /* Gleicht genau das Padding des .containers aus */
+                margin-left: -2rem; /* Schiebt Box absolut an den linken Rand */
                 padding: 0;
                 position: relative;
             }
             
             .hero-image-wrapper { 
-                position: relative;
+                position: absolute;
+                left: -1rem; /* Absolut an die Linke Seite gebunden, minimal in den Überschnitt */
+                bottom: 0;
                 height: 100%; 
-                width: auto; /* Bild holt sich die Breite dynamisch über die Höhe */
+                width: 60%; /* Breite hart auf 60% des Bildschirms limitiert */
                 margin: 0; 
                 z-index: 2;
-                display: flex;
-                align-items: flex-end;
-                justify-content: flex-start; 
+                display: block; 
             } 
             
             .hero-image-wrapper img {
                 height: 100%;
-                width: auto;
+                width: 100%;
                 object-fit: contain;
-                object-position: left bottom; /* Pinnt das Bild hart an den linken Rand des Wrappers */
+                object-position: left bottom; /* Bild innerhalb der 60%-Box linksbündig */
                 display: block;
             }
             
@@ -876,12 +873,12 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                left: 35%; /* Positioniert den Text leicht überlappend neben dem Bild */
+                left: 48%; /* Text startet erst in der rechten Bildschirmhälfte */
                 margin-left: 0;
                 height: fit-content;
-                text-align: left;
+                text-align: left; /* Text ist linksbündig, aber sitzt rechts vom Bild */
                 z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
-                font-size: clamp(3.5rem, 16vw, 5.5rem); 
+                font-size: clamp(3rem, 15vw, 5.5rem); 
                 text-transform: lowercase; 
                 line-height: 0.9;
             }
