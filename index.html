@@ -262,7 +262,7 @@
             transform: translateY(-3px);
         }
 
-        /* Center Stage */
+        /* Center Stage (Uniform Scaling Fix) */
         .hero-center-stage {
             position: relative;
             width: 100%;
@@ -278,16 +278,19 @@
             align-items: center; 
             justify-content: center;
             width: 100%;
-            max-width: 2000px; 
+            max-width: 1600px; /* Begrenzt die max-Breite auf extrem breiten Monitoren */
+            margin: 0 auto;
         }
 
         .hero-image-wrapper {
             position: relative;
-            width: 85vw; 
-            max-width: 1350px; 
-            min-width: 550px; 
+            width: 45vw; /* Feste Proportion im Verhältnis zur Breite */
+            max-width: 650px; /* Obergrenze, damit das Bild nicht gigantisch wird */
             z-index: 2;
             flex-shrink: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
 
         .hero-image-wrapper img {
@@ -301,7 +304,7 @@
 
         /* Split Title Style */
         .hero-title-part {
-            font-size: clamp(4.5rem, 17vw, 27rem); 
+            font-size: clamp(4rem, 12vw, 16rem); /* Sanftes Scaling parallel zum Bild */
             line-height: 0.9;
             letter-spacing: -0.03em;
             font-style: italic;
@@ -315,12 +318,12 @@
         }
 
         .hero-title-part.left {
-            margin-right: -25vw; 
+            margin-right: -10%; /* Prozentuale Überlappung ist browser-unabhängig stabiler */
             text-align: right;
         }
 
         .hero-title-part.right {
-            margin-left: -25vw; 
+            margin-left: -10%; 
             text-align: left;
         }
 
@@ -332,7 +335,6 @@
             padding-bottom: 0 !important; 
         }
 
-        /* Grid wurde durch ein Block-Layout ersetzt, da Bild 6 entfernt wurde */
         .about-grid {
             display: block; 
             max-width: 1000px;
@@ -341,7 +343,7 @@
 
         .about-text {
             padding-bottom: 6rem; 
-            text-align: center; /* Mittige Ausrichtung, da das Bild links fehlt */
+            text-align: center; 
         }
 
         .about-text h2 {
@@ -357,7 +359,7 @@
             content: '';
             position: absolute;
             left: 50%;
-            transform: translateX(-50%); /* Zentrierte Linie */
+            transform: translateX(-50%);
             bottom: -15px;
             width: 60px;
             height: 2px;
@@ -764,6 +766,7 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
             .about-features { gap: 2rem; }
+            .hero-title-part { font-size: clamp(3.5rem, 14vw, 12rem); }
         }
 
         @media (max-width: 768px) {
@@ -779,7 +782,7 @@
             
             /* HERO FIXES MOBILE */
             .hero {
-                padding-top: 130px; /* VERGRÖSSERT: Verhindert Überschneidung mit Taskbar */
+                padding-top: 130px; 
                 min-height: auto;
             }
             .hero-top-bar {
@@ -802,28 +805,28 @@
             .hero-lockup {
                 display: flex;
                 flex-direction: row;
-                justify-content: center; /* Bild und Text nebeneinander zentrieren */
+                justify-content: center;
                 align-items: center;
-                padding-left: 2vw; /* Ein wenig Abstand nach links */
+                padding: 0 5%;
             }
             .hero-image-wrapper { 
-                width: 55vw; /* Bild nimmt ca. die Hälfte ein */
-                min-width: unset;
-                margin: 0;
+                width: 60%; /* Relativer Wert statt harter Pixel/vw Grenze */
+                max-width: 350px;
+                margin-right: -15%; /* Text konsistent über das Bild ziehen */
             } 
             .hero-title-part.mobile-only {
-                font-size: 20vw; /* Große, passende Schrift */
+                font-size: clamp(3.5rem, 18vw, 8rem);
                 line-height: 0.9;
                 text-align: left;
-                margin-left: -8vw; /* Text zieht sich stylisch leicht über das Bild */
+                margin-left: 0; 
                 z-index: 5;
             }
             
-            /* Anpassungen Mobile About-Bereich (ohne Bild) */
+            /* Anpassungen Mobile About-Bereich */
             .about-text { padding-bottom: 4rem; }
             
             .about-features {
-                grid-template-columns: 1fr; /* Icons stapeln auf kleinen Screens */
+                grid-template-columns: 1fr;
                 gap: 2rem;
             }
             .feature-item i { margin-bottom: 0.5rem; }
@@ -844,7 +847,8 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title-part.mobile-only { font-size: 22vw; margin-left: -10vw; }
+            .hero-image-wrapper { width: 70%; }
+            .hero-title-part.mobile-only { font-size: clamp(3.5rem, 22vw, 6rem); margin-left: -18%; }
             .close-modal { top: -50px; right: 10px; }
         }
     </style>
@@ -920,8 +924,6 @@
     <section id="about" class="about section-padding">
         <div class="container">
             <div class="about-grid">
-                
-                <!-- Bild image6.png wurde entfernt -->
 
                 <div class="about-text">
                     <h2 class="gsap-about-text">The Creator behind the lens</h2>
