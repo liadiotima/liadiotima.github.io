@@ -849,7 +849,11 @@
                 height: 50vh; /* Bild bleibt schön gross im Zentrum */
                 margin: 0; 
                 z-index: 2;
+                justify-content: flex-start; /* NEU: Bild an den linken Rand des Wrappers packen */
             } 
+            .hero-image-wrapper img {
+                object-position: left bottom; /* NEU: Pixel des Bildes absolut linksbündig */
+            }
             
             .hero-title-part.mobile-only {
                 position: absolute;
