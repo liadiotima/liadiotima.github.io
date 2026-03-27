@@ -839,19 +839,20 @@
             .btn-primary { padding: 1rem 2rem; font-size: 0.85rem; }
             .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
 
+            /* NEUES EDITORIAL MOBILE LAYOUT */
             .hero-center-stage {
-                justify-content: flex-start; 
-                margin-left: -2rem; /* Gleicht das Container Padding von 2rem links aus */
-                width: calc(100% + 4rem); /* Gleicht Padding rechts/links komplett aus */
+                justify-content: center; 
+                margin-left: 0; 
+                width: 100%; 
             }
 
             .hero-lockup {
                 display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: flex-end;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 width: 100%;
-                height: 55vh; /* Schön gross! */
+                height: 60vh; /* Festes Maß für den perfekten Magazin-Look */
                 min-height: 400px;
                 transform: none;
                 margin-left: 0;
@@ -859,37 +860,42 @@
                 position: relative;
             }
             
-            /* NEUES BILD: Ausschließlich für Mobile, fest links verankert */
+            /* Bild: Nimmt den unteren Teil des Containers ein und steht stark in der Mitte */
             .hero-mobile-image {
-                display: block !important;
+                display: flex !important;
                 position: absolute;
                 left: 0;
                 bottom: 0;
-                height: 100%;
-                z-index: 2;
+                width: 100%;
+                height: 85%; /* Bild füllt fast den ganzen Raum nach oben */
+                justify-content: center;
+                align-items: flex-end; /* Unten bündig */
+                z-index: 2; /* Bild steht über dem Text, gibt Tiefe */
                 pointer-events: none;
             }
             
             .hero-mobile-image img {
                 height: 100%;
                 width: auto;
+                max-width: 100%; /* Verhindert, dass das Bild seitlich raushängt */
                 object-fit: contain;
-                object-position: left bottom;
+                object-position: bottom center; /* Fixiert das Bild exakt unten in der Mitte */
                 display: block;
             }
             
+            /* Titel: Große, prägnante Typografie oben zentriert, leicht hinter dem Bild */
             .hero-title-part.mobile-only {
                 position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 35%; /* Positioniert den Text leicht überlappend neben dem Bild */
+                top: 5%; /* Schön weit oben */
+                left: 0;
+                width: 100%;
+                text-align: center;
+                transform: none;
                 margin-left: 0;
-                height: fit-content;
-                text-align: left;
-                z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
-                font-size: clamp(3.5rem, 16vw, 5.5rem); 
+                z-index: 1; /* Text sitzt leicht hinter dem Bild für den Editorial Vibe */
+                font-size: clamp(4.5rem, 20vw, 7.5rem); 
                 text-transform: lowercase; 
-                line-height: 0.9;
+                line-height: 0.85;
             }
             
             /* Anpassungen Mobile About-Bereich */
@@ -918,11 +924,12 @@
 
         @media (max-width: 480px) {
             .hero-lockup { 
-                height: 50vh; 
+                height: 55vh; 
                 min-height: 380px;
             }
             .hero-title-part.mobile-only { 
-                font-size: clamp(3rem, 15vw, 4.5rem); 
+                font-size: clamp(4rem, 18vw, 5.5rem); 
+                top: 2%;
             }
             .close-modal { top: -50px; right: 10px; }
         }
