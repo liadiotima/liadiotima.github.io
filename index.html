@@ -270,7 +270,7 @@
             display: flex;
             justify-content: center;
             align-items: center; 
-            padding-bottom: 2rem;
+            padding-bottom: 0rem;
         }
 
         .hero-lockup {
@@ -282,7 +282,7 @@
             position: relative; 
             /* Verschiebt das gesamte Element (Bild + Text) nach links, 
                um den optischen Schwerpunkt auszugleichen */
-            transform: translateX(-14xw);
+            transform: translateX(-14vw);
         }
 
         .hero-image-wrapper {
@@ -839,9 +839,11 @@
             /* Modern Editorial Mobile Layout */
             .hero-lockup {
                 flex-direction: row; 
+                justify-content: flex-start; /* Image to the left edge */
                 gap: 0;
                 padding: 0;
-                transform: translateX(-5vw); /* Leicht nach links geschoben wie beim Desktop */
+                transform: none; /* Reset transform */
+                margin-left: -2rem; /* Negates the container padding to touch the screen edge */
             }
             .hero-image-wrapper { 
                 height: 50vh; /* Bild bleibt schön gross im Zentrum */
@@ -855,8 +857,8 @@
                 bottom: 0;
                 margin-top: auto;
                 margin-bottom: auto;
-                left: 50%;
-                margin-left: 2vw; /* Platziert den Text rechts neben der Bildmitte */
+                left: 40%; /* Position text on the right next to the image */
+                margin-left: 0;
                 height: fit-content;
                 text-align: left;
                 z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
