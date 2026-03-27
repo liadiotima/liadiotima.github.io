@@ -262,7 +262,7 @@
             transform: translateY(-3px);
         }
 
-        /* Center Stage (Uniform Scaling Fix) */
+        /* Center Stage (BIG & STABLE Proportions) */
         .hero-center-stage {
             position: relative;
             width: 100%;
@@ -278,14 +278,14 @@
             align-items: center; 
             justify-content: center;
             width: 100%;
-            max-width: 1600px; /* Begrenzt die max-Breite auf extrem breiten Monitoren */
+            max-width: 1800px; /* Großzügige Breite für Desktop */
             margin: 0 auto;
         }
 
         .hero-image-wrapper {
             position: relative;
-            width: 45vw; /* Feste Proportion im Verhältnis zur Breite */
-            max-width: 650px; /* Obergrenze, damit das Bild nicht gigantisch wird */
+            width: 75vw; /* Wieder deutlich breiter/größer */
+            max-width: 1100px; /* Obergrenze zum Schutz auf 4K */
             z-index: 2;
             flex-shrink: 0; 
             display: flex;
@@ -304,7 +304,7 @@
 
         /* Split Title Style */
         .hero-title-part {
-            font-size: clamp(4rem, 12vw, 16rem); /* Sanftes Scaling parallel zum Bild */
+            font-size: clamp(4rem, 16vw, 24rem); /* Wieder deutlich größer */
             line-height: 0.9;
             letter-spacing: -0.03em;
             font-style: italic;
@@ -318,12 +318,12 @@
         }
 
         .hero-title-part.left {
-            margin-right: -10%; /* Prozentuale Überlappung ist browser-unabhängig stabiler */
+            margin-right: -15vw; /* Stabiler Overlap */
             text-align: right;
         }
 
         .hero-title-part.right {
-            margin-left: -10%; 
+            margin-left: -15vw; 
             text-align: left;
         }
 
@@ -335,15 +335,33 @@
             padding-bottom: 0 !important; 
         }
 
+        /* Grid Layout für Desktop zurückgesetzt (inkl. Bild) */
         .about-grid {
-            display: block; 
-            max-width: 1000px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 6fr 5fr;
+            gap: 6rem;
+            align-items: flex-end;
+        }
+
+        .about-img-container {
+            position: relative;
+            height: auto;
+            order: 2; 
+            transform: scale(1.2); 
+            transform-origin: right bottom; 
+        }
+
+        .about-img-container img {
+            width: 115%;
+            height: auto; 
+            object-fit: cover;
+            display: block;
         }
 
         .about-text {
-            padding-bottom: 6rem; 
-            text-align: center; 
+            padding-bottom: 8rem; 
+            text-align: left; 
+            order: 1;
         }
 
         .about-text h2 {
@@ -358,8 +376,7 @@
         .about-text h2::after {
             content: '';
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             bottom: -15px;
             width: 60px;
             height: 2px;
@@ -372,9 +389,6 @@
             margin-bottom: 1.8rem;
             color: var(--text-muted);
             font-weight: 300;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .about-text p.quote-text {
@@ -388,10 +402,10 @@
         .about-features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 4rem;
             align-items: start;
-            text-align: center;
+            text-align: left;
         }
 
         .feature-item i {
@@ -765,8 +779,19 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            .about-features { gap: 2rem; }
-            .hero-title-part { font-size: clamp(3.5rem, 14vw, 12rem); }
+            .hero-title-part { font-size: clamp(4rem, 15vw, 18rem); }
+            
+            /* Tablet About Fixes */
+            .about-grid { gap: 4rem; grid-template-columns: 1fr; }
+            .about-img-container { 
+                max-width: 600px; 
+                margin: 0 auto; 
+                transform: scale(1); /* Vergrößerung zurücknehmen */
+                order: -1; 
+            }
+            .about-text { order: 2; padding-bottom: 6rem; text-align: center; }
+            .about-text h2::after { left: 50%; transform: translateX(-50%); }
+            .about-features { text-align: center; }
         }
 
         @media (max-width: 768px) {
@@ -810,12 +835,12 @@
                 padding: 0 5%;
             }
             .hero-image-wrapper { 
-                width: 60%; /* Relativer Wert statt harter Pixel/vw Grenze */
-                max-width: 350px;
-                margin-right: -15%; /* Text konsistent über das Bild ziehen */
+                width: 70%; 
+                max-width: 400px;
+                margin-right: -25%; 
             } 
             .hero-title-part.mobile-only {
-                font-size: clamp(3.5rem, 18vw, 8rem);
+                font-size: clamp(4rem, 24vw, 9rem);
                 line-height: 0.9;
                 text-align: left;
                 margin-left: 0; 
@@ -823,6 +848,9 @@
             }
             
             /* Anpassungen Mobile About-Bereich */
+            .about-img-container {
+                display: none; /* Versteckt image6.png komplett auf Mobile! */
+            }
             .about-text { padding-bottom: 4rem; }
             
             .about-features {
@@ -847,8 +875,8 @@
         }
 
         @media (max-width: 480px) {
-            .hero-image-wrapper { width: 70%; }
-            .hero-title-part.mobile-only { font-size: clamp(3.5rem, 22vw, 6rem); margin-left: -18%; }
+            .hero-image-wrapper { width: 80%; }
+            .hero-title-part.mobile-only { font-size: clamp(3.5rem, 26vw, 7rem); margin-left: -20%; }
             .close-modal { top: -50px; right: 10px; }
         }
     </style>
@@ -924,6 +952,11 @@
     <section id="about" class="about section-padding">
         <div class="container">
             <div class="about-grid">
+                
+                <!-- Bild ist wieder da (wird auf Desktop/Tablet gezeigt, auf Handy versteckt) -->
+                <div class="about-img-container gsap-about-img">
+                    <img src="image6.png" alt="Lia Diotima" onerror="this.src='https://placehold.co/600x800/f4f0ef/1e1a1d?text=Portrait'">
+                </div>
 
                 <div class="about-text">
                     <h2 class="gsap-about-text">The Creator behind the lens</h2>
@@ -1245,7 +1278,18 @@
             ease: "power2.out"
         }, "-=0.8");
 
-        // About - (Animatio für Bild entfernt)
+        // About - Bild GSAP Animation wieder aktiviert!
+        gsap.from(".gsap-about-img", {
+            scrollTrigger: {
+                trigger: ".about",
+                start: "top 80%",
+            },
+            y: 40,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out"
+        });
+
         gsap.from(".gsap-about-text", {
             scrollTrigger: {
                 trigger: ".about",
