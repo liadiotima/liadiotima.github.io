@@ -19,7 +19,6 @@
             --primary-dark: #1e1a1d; 
             --text-muted: #5a5258;
             --accent-color: #b57a8a; 
-            --accent-hover: #9c6372;
             --bg-color: #fbfaf9; 
             --surface-color: #ffffff;
             --surface-alt: #f4f0ef; 
@@ -303,11 +302,6 @@
             object-fit: contain;
             object-position: center bottom; 
             display: block;
-        }
-        
-        /* Basis Verstecken für das Mobile Bild auf Desktop */
-        .hero-mobile-image {
-            display: none;
         }
 
         /* Split Title Style - Absolute Positioning relative to center */
@@ -839,7 +833,7 @@
             .btn-primary { padding: 1rem 2rem; font-size: 0.85rem; }
             .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
 
-            /* NEUES EDITORIAL MOBILE LAYOUT */
+            /* NEUES EDITORIAL MOBILE LAYOUT OHNE BILD */
             .hero-center-stage {
                 justify-content: center; 
                 margin-left: 0; 
@@ -848,54 +842,27 @@
 
             .hero-lockup {
                 display: flex;
-                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                height: 60vh; /* Festes Maß für den perfekten Magazin-Look */
-                min-height: 400px;
+                height: auto;
                 transform: none;
                 margin-left: 0;
-                padding: 0;
-                position: relative;
+                padding: 3rem 0;
             }
             
-            /* Bild: Nimmt den unteren Teil des Containers ein und steht stark in der Mitte */
-            .hero-mobile-image {
-                display: flex !important;
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                height: 85%; /* Bild füllt fast den ganzen Raum nach oben */
-                justify-content: center;
-                align-items: flex-end; /* Unten bündig */
-                z-index: 2; /* Bild steht über dem Text, gibt Tiefe */
-                pointer-events: none;
-            }
-            
-            .hero-mobile-image img {
-                height: 100%;
-                width: auto;
-                max-width: 100%; /* Verhindert, dass das Bild seitlich raushängt */
-                object-fit: contain;
-                object-position: bottom center; /* Fixiert das Bild exakt unten in der Mitte */
-                display: block;
-            }
-            
-            /* Titel: Große, prägnante Typografie oben zentriert, leicht hinter dem Bild */
+            /* Titel: Große, prägnante Typografie zentriert. Position relativ überschreibt das absolut vom Desktop */
             .hero-title-part.mobile-only {
-                position: absolute;
-                top: 5%; /* Schön weit oben */
-                left: 0;
+                position: relative;
                 width: 100%;
                 text-align: center;
-                transform: none;
-                margin-left: 0;
-                z-index: 1; /* Text sitzt leicht hinter dem Bild für den Editorial Vibe */
-                font-size: clamp(4.5rem, 20vw, 7.5rem); 
+                z-index: 1; 
+                font-size: clamp(3.5rem, 16vw, 6rem); 
                 text-transform: lowercase; 
-                line-height: 0.85;
+                line-height: 0.9;
+                padding: 0 1rem;
+                box-sizing: border-box;
+                margin: 0;
             }
             
             /* Anpassungen Mobile About-Bereich */
@@ -923,13 +890,8 @@
         }
 
         @media (max-width: 480px) {
-            .hero-lockup { 
-                height: 55vh; 
-                min-height: 380px;
-            }
             .hero-title-part.mobile-only { 
-                font-size: clamp(4rem, 18vw, 5.5rem); 
-                top: 2%;
+                font-size: clamp(3rem, 14vw, 4.5rem); 
             }
             .close-modal { top: -50px; right: 10px; }
         }
@@ -991,11 +953,6 @@
                     </div>
                     
                     <h1 class="hero-title-part right desktop-only gsap-hero-title">Diotima</h1>
-
-                    <!-- NEUES MOBILE BILD (Wird auf Desktop versteckt, komplett isoliert) -->
-                    <div class="hero-mobile-image mobile-only gsap-hero-img">
-                        <img src="Image4.png" alt="Lia Diotima Premium UGC Content Creator" onerror="this.src='https://placehold.co/800x1200/eaddd7/1e1a1d?text=Image+4.png'">
-                    </div>
 
                     <!-- Mobile-Only Title -->
                     <h1 class="hero-title-part mobile-only gsap-hero-title">lia<br>diotima</h1>
