@@ -836,7 +836,9 @@
 
             /* Modern Editorial Mobile Layout */
             .hero-center-stage {
-                justify-content: flex-start; /* Zwingt den gesamten Block an den linken Rand */
+                justify-content: flex-start; 
+                margin-left: -2rem;
+                width: calc(100% + 2rem);
             }
 
             .hero-lockup {
@@ -844,11 +846,11 @@
                 flex-direction: row;
                 justify-content: flex-start; /* Bild im Container nach links drücken */
                 align-items: flex-end;
-                width: calc(100% + 2rem); 
+                width: 100%;
                 height: 55vh; /* Schön gross! */
                 min-height: 400px;
                 transform: none;
-                margin-left: -2rem; /* Gleicht genau das Padding des .containers aus */
+                margin-left: 0;
                 padding: 0;
                 position: relative;
             }
