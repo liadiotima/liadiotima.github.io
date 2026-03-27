@@ -304,6 +304,11 @@
             object-position: center bottom; 
             display: block;
         }
+        
+        /* Basis Verstecken für das Mobile Bild auf Desktop */
+        .hero-mobile-image {
+            display: none;
+        }
 
         /* Split Title Style - Absolute Positioning relative to center */
         .hero-title-part {
@@ -817,7 +822,7 @@
             }
             .section-padding { padding: 5rem 0; }
             
-            /* HERO FIXES MOBILE - Keeping Desktop Alignments */
+            /* HERO FIXES MOBILE - Neue Strukturierung */
             .hero {
                 padding-top: 100px; 
                 min-height: auto;
@@ -834,17 +839,16 @@
             .btn-primary { padding: 1rem 2rem; font-size: 0.85rem; }
             .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
 
-            /* Modern Editorial Mobile Layout */
             .hero-center-stage {
                 justify-content: flex-start; 
-                margin-left: -2rem;
-                width: calc(100% + 2rem);
+                margin-left: -2rem; /* Gleicht das Container Padding von 2rem links aus */
+                width: calc(100% + 4rem); /* Gleicht Padding rechts/links komplett aus */
             }
 
             .hero-lockup {
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-start; /* Bild im Container nach links drücken */
+                justify-content: flex-start;
                 align-items: flex-end;
                 width: 100%;
                 height: 55vh; /* Schön gross! */
@@ -855,22 +859,22 @@
                 position: relative;
             }
             
-            .hero-image-wrapper { 
-                position: relative;
-                height: 100%; 
-                width: auto; /* Bild holt sich die Breite dynamisch über die Höhe */
-                margin: 0; 
+            /* NEUES BILD: Ausschließlich für Mobile, fest links verankert */
+            .hero-mobile-image {
+                display: block !important;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 100%;
                 z-index: 2;
-                display: flex;
-                align-items: flex-end;
-                justify-content: flex-start; 
-            } 
+                pointer-events: none;
+            }
             
-            .hero-image-wrapper img {
+            .hero-mobile-image img {
                 height: 100%;
                 width: auto;
                 object-fit: contain;
-                object-position: left bottom; /* Pinnt das Bild hart an den linken Rand des Wrappers */
+                object-position: left bottom;
                 display: block;
             }
             
@@ -974,11 +978,17 @@
                 <div class="hero-lockup">
                     <h1 class="hero-title-part left desktop-only gsap-hero-title">Lia</h1>
                     
-                    <div class="hero-image-wrapper gsap-hero-img">
+                    <!-- DESKTOP BILD (Nur für Desktop sichtbar) -->
+                    <div class="hero-image-wrapper desktop-only gsap-hero-img">
                         <img src="Image4.png" alt="Lia Diotima Premium UGC Content Creator" onerror="this.src='https://placehold.co/800x1200/eaddd7/1e1a1d?text=Image+4.png'">
                     </div>
                     
                     <h1 class="hero-title-part right desktop-only gsap-hero-title">Diotima</h1>
+
+                    <!-- NEUES MOBILE BILD (Wird auf Desktop versteckt, komplett isoliert) -->
+                    <div class="hero-mobile-image mobile-only gsap-hero-img">
+                        <img src="Image4.png" alt="Lia Diotima Premium UGC Content Creator" onerror="this.src='https://placehold.co/800x1200/eaddd7/1e1a1d?text=Image+4.png'">
+                    </div>
 
                     <!-- Mobile-Only Title -->
                     <h1 class="hero-title-part mobile-only gsap-hero-title">lia<br>diotima</h1>
