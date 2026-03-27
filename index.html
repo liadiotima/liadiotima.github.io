@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lia Diotima | UGC Content Creator</title>
+    <title>Lia Diotima | Premium UGC Content Creator</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-dark: #2e1a2b; /* Dunkles Lila - Haupttextfarbe */
-            --primary-purple: #8e44ad;
-            --soft-pink: #fce4ec;
-            --vivid-pink: #d81b60; /* Akzentfarbe */
-            --bg-color: #faf5f7;
-            --white: #ffffff;
+            /* Sophisticated Editorial Palette */
+            --primary-dark: #1e1a1d; /* Tiefes Anthrazit/Lila-Schwarz */
+            --text-muted: #5a5258;
+            --accent-color: #b57a8a; /* Elegantes Altrosa / Dusty Rose */
+            --accent-hover: #9c6372;
+            --bg-color: #fbfaf9; /* Warmes Off-White */
+            --surface-color: #ffffff;
+            --surface-alt: #f4f0ef; /* Sehr sanftes Grau-Rosa für Sektionen */
+            
             --font-main: 'Montserrat', sans-serif;
             --font-display: 'Playfair Display', serif;
+            
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -37,32 +42,61 @@
             color: var(--primary-dark);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4 {
             font-family: var(--font-display);
             color: var(--primary-dark);
+            font-weight: 500;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: 0.3s;
+            transition: var(--transition);
         }
 
         ul {
             list-style: none;
         }
 
+        /* --- Components --- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.5rem;
+            background-color: var(--primary-dark);
+            color: var(--surface-color);
+            font-family: var(--font-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            border: 1px solid var(--primary-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--surface-color);
+            transform: translateY(-2px);
+        }
+
         /* --- Layout Utilities --- */
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
 
         .section-padding {
-            padding: 6rem 0;
+            padding: 8rem 0;
         }
 
         /* --- Navigation --- */
@@ -71,12 +105,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.2rem 0;
+            padding: 1.5rem 0;
             z-index: 1000;
-            background: rgba(250, 245, 247, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
+            background: rgba(251, 250, 249, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
         }
 
         .nav-container {
@@ -87,17 +121,17 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         .nav-links a {
-            font-family: var(--font-main);
             font-weight: 500;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: var(--primary-dark);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
             position: relative;
+            padding-bottom: 4px;
         }
 
         .nav-links a::after {
@@ -105,178 +139,309 @@
             position: absolute;
             width: 0;
             height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--vivid-pink);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--vivid-pink);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: radial-gradient(circle at top right, #f8dce8, transparent 40%);
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 5;
-        }
-
-        .hero-content h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary-dark);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* --- REDESIGNED HERO SECTION --- */
+        .hero {
+            min-height: 100vh;     
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;  
+            padding-top: 55px; 
+            padding-bottom: 0; 
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60vw;
+            height: 60vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: radial-gradient(circle, rgba(181, 122, 138, 0.12) 0%, rgba(251, 250, 249, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* Top Bar Content */
+        .hero-top-bar {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 3rem auto auto auto; 
+            gap: 2rem;
+            z-index: 3;
+            flex-shrink: 0; 
+        }
+
+        .hero-info {
+            max-width: 550px;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-family: var(--font-main);
+            font-size: 1.15rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-dark);
-            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
             font-weight: 600;
         }
 
         .hero-tagline {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
-            max-width: 500px;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--text-muted);
             font-weight: 300;
+            margin: 0;
+        }
+
+        .hero-actions-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .social-btn {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border: 1px solid var(--primary-dark);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(30, 26, 29, 0.15);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            background: transparent;
         }
 
         .social-btn:hover {
             background: var(--primary-dark);
-            color: var(--white);
+            color: var(--surface-color);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
         }
 
-        .hero-images {
+        /* Center Stage */
+        .hero-center-stage {
             position: relative;
-            height: 600px;
             width: 100%;
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; 
         }
 
-        .hero-img {
-            position: absolute;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(46, 26, 43, 0.15);
+        .hero-lockup {
+            display: flex;
+            flex-direction: row;
+            align-items: center; 
+            justify-content: center;
+            width: 100%;
+            max-width: 2000px; 
         }
 
-        /* Bild-Positionierung */
-        .img-2 {
-            width: 320px;
-            height: 450px;
-            top: -30px;
-            left: 10px;
-            z-index: 1;
-            background-color: #ddd; 
-        }
-
-        .img-3 {
-            width: 280px;
-            height: 380px;
-            bottom: 0;
-            right: 10px;
+        .hero-image-wrapper {
+            position: relative;
+            width: 85vw; 
+            max-width: 1350px; 
+            min-width: 550px; 
             z-index: 2;
-            border: none;
-            background-color: #ccc; 
+            flex-shrink: 0; 
         }
 
-        /* --- About Section --- */
+        .hero-image-wrapper img {
+            width: 100%; 
+            height: auto; 
+            max-height: 85vh; 
+            object-fit: contain;
+            object-position: center bottom; 
+            display: block;
+        }
+
+        /* Split Title Style */
+        .hero-title-part {
+            font-size: clamp(4.5rem, 17vw, 27rem); 
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--primary-dark);
+            text-shadow: 0 15px 35px rgba(251, 250, 249, 0.9);
+            margin: 0;
+            z-index: 1; 
+            position: relative;
+            white-space: nowrap; 
+        }
+
+        .hero-title-part.left {
+            margin-right: -25vw; 
+            text-align: right;
+        }
+
+        .hero-title-part.right {
+            margin-left: -25vw; 
+            text-align: left;
+        }
+
+        /* --- ABOUT SECTION --- */
         .about {
-            background-color: var(--white);
+            background-color: var(--surface-color); 
+            position: relative;
+            z-index: 10; 
+            padding-bottom: 0 !important; /* Macht den Container bündig zum nächsten Element */
         }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 5rem;
-            align-items: center;
+            grid-template-columns: 6fr 5fr; 
+            gap: 6rem;
+            align-items: flex-end; /* Elemente unten bündig ausrichten */
         }
 
         .about-img-container {
             position: relative;
-            height: 600px;
-            border-radius: 200px 200px 0 0;
-            overflow: hidden;
+            height: auto;
+            border-radius: 0;
+            overflow: visible;
+            box-shadow: none;
+            order: 2; 
+            transform: scale(1.2); 
+            transform-origin: right bottom; /* Verankert das Bild bei der Vergrößerung unten */
         }
 
         .about-img-container img {
-            width: 100%;
-            height: 100%;
+            width: 115%;
+            height: auto; 
             object-fit: cover;
+            display: block;
+        }
+
+        .about-text {
+            padding-bottom: 8rem; /* Stellt das Layout-Padding für den Textteil wieder her */
+            order: 1; 
         }
 
         .about-text h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: var(--primary-dark);
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            text-transform: none;
+            line-height: 1.2;
+            letter-spacing: normal;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-color);
         }
 
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1.8rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .about-text p.quote-text {
+            font-size: 1.25rem;
             color: var(--primary-dark);
-            opacity: 0.85;
+            font-style: italic;
+            font-family: var(--font-display);
+        }
+
+        /* Feature Spalten (horizontal links vom Bild) */
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .feature-item i {
+            font-size: 2.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-item h4 {
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: none;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin: 0;
         }
 
         /* --- Brands Section --- */
         .brands {
             text-align: center;
-            background-color: var(--soft-pink);
-            padding: 4rem 0;
+            background-color: var(--surface-alt);
+            padding: 6rem 0;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .brands h3 {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            font-weight: 400;
-            font-style: italic;
-            color: var(--primary-dark);
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 4rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .brand-list {
@@ -284,101 +449,101 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 3rem; 
-            max-width: 1000px;
+            gap: 4rem; 
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .brand-logo {
-            height: 45px;
+            --scale: 1; 
+            height: calc(50px * var(--scale));
             width: auto;
             object-fit: contain;
-            transition: transform 0.3s ease;
-            max-width: 150px;
+            max-width: calc(180px * var(--scale));
+            transition: var(--transition);
         }
 
         .brand-logo.large {
-            height: 70px;
-            max-width: 220px;
+            height: calc(100px * var(--scale));
+            max-width: calc(1000px * var(--scale));
         }
 
         .brand-logo:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         /* --- Projects Section --- */
+        .projects {
+            background-color: var(--bg-color);
+        }
+
         .projects-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
         }
 
         .projects-header h2 {
-            font-size: 3rem;
-            color: var(--primary-dark);
+            font-size: 3.5rem;
         }
         
+        .projects-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 1rem;
+            font-weight: 300;
+        }
+
         .project-category {
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         .category-title {
-            font-size: 1.8rem;
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-            text-align: left;
-            border-left: 4px solid var(--vivid-pink);
-            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background-color: rgba(0,0,0,0.1);
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: var(--transition);
             cursor: pointer;
             position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-        }
-
-        /* Angepasster Play-Button (Immer sichtbar) */
-        .project-card::after {
-            content: '\f04b'; 
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1);
-            font-size: 3rem;
-            color: white;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            z-index: 10;
-            text-shadow: 0 0 15px rgba(0,0,0,0.6);
-        }
-
-        .project-card:hover::after {
-            transform: translate(-50%, -50%) scale(1.15);
-            opacity: 1;
-            color: var(--vivid-pink);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .video-wrapper {
             width: 100%;
             aspect-ratio: 9/16;
             background: #000;
+            border-radius: 16px 16px 0 0; 
             position: relative;
+            overflow: hidden;
         }
 
         .video-wrapper video {
@@ -386,39 +551,87 @@
             height: 100%;
             object-fit: cover;
             pointer-events: none;
+            transition: transform 0.7s ease;
+        }
+
+        .project-card:hover .video-wrapper video {
+            transform: scale(1.03);
+        }
+
+        .play-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: var(--transition);
+            color: white;
+        }
+
+        .play-indicator i {
+            margin-left: 3px; 
+            font-size: 1.2rem;
+        }
+
+        .project-card:hover .play-indicator {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .project-caption {
-            padding: 1.2rem;
+            padding: 1.5rem 0.5rem 1.5rem;
             text-align: center;
         }
 
         .project-caption h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-dark);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* --- Rates Section --- */
         .rates {
-            background-color: var(--white);
+            background-color: var(--surface-alt);
             text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .rates-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
         }
 
         .rates h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 2rem;
         }
 
         .rates p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            color: var(--primary-dark);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-weight: 300;
         }
 
-        /* --- VIDEO MODAL (Lightbox) --- */
+        /* --- VIDEO MODAL --- */
         .video-modal {
             display: none;
             position: fixed;
@@ -427,13 +640,12 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(15, 12, 14, 0.95);
+            backdrop-filter: blur(10px);
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 20px;
+            transition: opacity 0.4s ease;
         }
 
         .video-modal.active {
@@ -446,45 +658,62 @@
             width: 100%;
             max-width: 450px;
             max-height: 90vh;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-modal.active .modal-content {
+            transform: translateY(0);
         }
 
         .modal-content video {
             width: 100%;
             height: auto;
-            max-height: 80vh;
-            border-radius: 8px;
-            box-shadow: 0 0 50px rgba(255,255,255,0.1);
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            outline: none;
         }
 
         .close-modal {
             position: absolute;
             top: -40px;
-            right: 0;
-            color: #f1f1f1;
-            font-size: 35px;
-            font-weight: bold;
-            transition: 0.3s;
+            right: 20px;
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: 300;
+            transition: var(--transition);
             cursor: pointer;
             z-index: 10001;
-            padding: 10px;
+            opacity: 0.7;
+        }
+
+        .close-modal:hover {
+            opacity: 1;
+            transform: rotate(90deg);
         }
 
         /* --- Footer --- */
         .footer {
             background-color: var(--primary-dark);
-            color: var(--white);
+            color: var(--surface-color);
             text-align: center;
             padding: 5rem 0;
         }
 
         .footer h2 {
+            font-family: var(--font-display);
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: var(--soft-pink);
+            color: var(--accent-color);
             line-height: 1.2;
+            letter-spacing: normal;
+            text-transform: none;
+            font-weight: 500;
         }
 
         .contact-block {
@@ -496,14 +725,16 @@
         }
 
         .contact-label {
+            font-family: var(--font-main);
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--white);
-            font-weight: 700;
+            color: var(--surface-color);
+            font-weight: 600;
         }
 
         .footer-email {
+            font-family: var(--font-main);
             font-size: 2.2rem; 
             color: #ffffff !important;
             text-decoration: none;
@@ -511,10 +742,11 @@
             padding-bottom: 2px;
             transition: all 0.3s ease;
             display: inline-block;
+            margin-bottom: 0;
         }
         
         .footer-email:hover {
-            color: var(--vivid-pink) !important;
+            color: var(--accent-color) !important;
         }
 
         .footer-socials {
@@ -522,57 +754,106 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
+            margin-bottom: 0;
         }
         
         .footer-socials a {
+            display: inline-block;
+            background: transparent;
             font-size: 2rem;
-            color: var(--soft-pink);
-            transition: color 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         
         .footer-socials a:hover {
-            color: var(--vivid-pink);
+            color: var(--accent-color);
             transform: translateY(-3px);
         }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.75rem;
-                flex-wrap: wrap;
-                justify-content: center;
+        @media (max-width: 1024px) {
+            /* Auf Tablets brechen wir das Layout früher um, da die 3 Icons Platz brauchen */
+            .about-grid { gap: 4rem; grid-template-columns: 1fr; }
+            .about-img-container { 
+                height: auto; 
+                max-width: 600px; 
+                margin: 0 auto; 
+                transform: scale(1); /* Vergrößerung auf kleinen Screens zurücknehmen */
+                order: -1; 
             }
-            .section-padding { padding: 4rem 0; }
-            
-            /* Mobile Hero Anpassung: Image2 als Background, Image3 weg */
-            .hero {
-                background: linear-gradient(rgba(250, 245, 247, 0.7), rgba(250, 245, 247, 0.7)), url('Image2.jpg') center/cover no-repeat;
-                text-align: center;
-                padding-top: 100px;
-            }
-            .hero-grid { grid-template-columns: 1fr; }
-            .hero-images { display: none; } /* Image2 und Image3 Container ausblenden */
-            .hero-content { margin: 0 auto; }
-            .hero-tagline { margin-left: auto; margin-right: auto; }
-            .social-links { justify-content: center; }
+            .about-text { order: 2; padding-bottom: 6rem; }
+        }
 
-            .hero-content h1 { font-size: 3rem; }
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.7rem;
+                flex-wrap: wrap;
+            }
+            .section-padding { padding: 5rem 0; }
+            
+            .hero {
+                padding-top: 90px;
+                min-height: auto;
+            }
+            .hero-top-bar {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-top: 0;
+                gap: 1.5rem;
+            }
+            .hero-subtitle { font-size: 0.9rem; }
+            .hero-tagline { font-size: 1.1rem; }
+            .btn-primary { padding: 1rem 2rem; font-size: 0.85rem; }
+            .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
+
+            .hero-actions-container {
+                align-items: center;
+            }
+            
+            .hero-image-wrapper { width: 95vw; } 
+            .hero-title-part { font-size: 33vw; }
+            .hero-title-part.left { margin-right: -25vw; }
+            .hero-title-part.right { margin-left: -25vw; }
+            
+            /* Anpassungen Mobile für About-Bild und Text */
             .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .about-img-container { height: 400px; order: 1; border-radius: 12px; }
-            .about-text { order: 2; text-align: center; }
-            .category-title { text-align: center; border-left: none; border-bottom: 3px solid var(--vivid-pink); display: inline-block; padding-bottom: 5px; padding-left: 0; }
-            .project-category { text-align: center; }
-            .brand-list { gap: 1.5rem; }
-            .brand-logo { height: 35px; }
-            .brand-logo.large { height: 50px; }
+            .about-img-container { 
+                height: auto; 
+                width: 100%;
+                margin: 0;
+                order: -1; 
+                border-radius: 24px; 
+                overflow: hidden; 
+                transform: scale(1);
+            }
+            .about-text { text-align: center; padding-bottom: 5rem; }
+            .about-text h2::after { left: 50%; transform: translateX(-50%); }
+            
+            .about-features {
+                grid-template-columns: 1fr; /* Icons stapeln auf kleinen Screens */
+                gap: 2rem;
+            }
+            .feature-item i { margin-bottom: 0.5rem; }
+
+            .category-title { justify-content: center; }
+            .category-title::after { display: none; }
+            
+            .brand-list { gap: 2rem; }
+            
+            .brand-logo { height: calc(30px * var(--scale)); } 
+            .brand-logo.large { height: calc(60px * var(--scale)); }
+            
+            .rates-content { padding: 3rem 1.5rem; }
+            .rates h2 { font-size: 2.5rem; }
+            
             .footer h2 { font-size: 2rem; }
             .footer-email { font-size: 1.5rem; }
         }
 
         @media (max-width: 480px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .social-btn { padding: 0.6rem 1rem; font-size: 0.8rem; }
+            .hero-title-part { font-size: 33vw; }
             .close-modal { top: -50px; right: 10px; }
         }
     </style>
@@ -584,9 +865,9 @@
         <div class="container nav-container">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About me</a></li>
-                <li><a href="#trusted">Trusted by</a></li>
-                <li><a href="#videos">Videos</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#trusted">Clients</a></li>
+                <li><a href="#videos">Work</a></li>
                 <li><a href="#rates">Rates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -594,34 +875,47 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="home" class="hero section-padding">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="gsap-hero-text">Lia Diotima</h1>
-                    <div class="hero-subtitle gsap-hero-text">UGC Content Creator</div>
-                    <p class="hero-tagline gsap-hero-text">
-                        Authentic Storytelling & High-Performance Content for your Social Media.
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            
+            <!-- Top Content Bar -->
+            <div class="hero-top-bar">
+                <div class="hero-info gsap-hero-top">
+                    <div class="hero-subtitle">Premium UGC Creator</div>
+                    <p class="hero-tagline">
+                        Authentic storytelling & high-performance visual content crafted specifically to elevate your brand's social presence in swiss german, german and english.
                     </p>
-                    
-                    <div class="social-links gsap-hero-text">
-                        <a href="https://www.tiktok.com/@liadiotima.ugc" target="_blank" class="social-btn">
-                            <i class="fa-brands fa-tiktok"></i> TikTok
+                </div>
+                
+                <div class="hero-actions-container gsap-hero-top">
+                    <a href="#videos" class="btn-primary">View Projects</a>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@liadiotima.ugc" target="_blank" class="social-btn" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
                         </a>
-                        <a href="https://www.instagram.com/liadiotima.ugc/" target="_blank" class="social-btn">
-                            <i class="fa-brands fa-instagram"></i> Instagram
+                        <a href="https://www.instagram.com/liadiotima.ugc/" target="_blank" class="social-btn" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="mailto:liadiotima.ugc@gmail.com" class="social-btn">
-                            <i class="fa-regular fa-envelope"></i> Email
+                        <a href="mailto:liadiotima.ugc@gmail.com" class="social-btn" aria-label="Email">
+                            <i class="fa-regular fa-envelope"></i>
                         </a>
                     </div>
                 </div>
+            </div>
 
-                <div class="hero-images">
-                    <img src="Image2.jpg" alt="Lia Diotima Aesthetic" class="hero-img img-2" onerror="this.src='https://placehold.co/320x450/pink/white?text=Image2'">
-                    <img src="Image3.JPG" alt="Lia Diotima Portrait" class="hero-img img-3" onerror="this.src='https://placehold.co/280x380/purple/white?text=Image3'">
+            <!-- Center Stage -->
+            <div class="hero-center-stage">
+                <div class="hero-lockup">
+                    <h1 class="hero-title-part left gsap-hero-title">Lia</h1>
+                    
+                    <div class="hero-image-wrapper gsap-hero-img">
+                        <img src="image4.png" alt="Lia Diotima Premium UGC Content Creator" onerror="this.src='https://placehold.co/1200x800/eaddd7/1e1a1d?text=Image+4.png'">
+                    </div>
+                    
+                    <h1 class="hero-title-part right gsap-hero-title">Diotima</h1>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -629,27 +923,45 @@
     <section id="about" class="about section-padding">
         <div class="container">
             <div class="about-grid">
+                
                 <div class="about-img-container gsap-about-img">
-                    <img src="Image1.png" alt="About Lia" onerror="this.src='https://placehold.co/600x800/2e1a2b/white?text=Image1'">
+                    <img src="Image1.png" alt="Lia Diotima" onerror="this.src='https://placehold.co/600x800/f4f0ef/1e1a1d?text=Portrait'">
                 </div>
 
                 <div class="about-text">
-                    <h2 class="gsap-about-text">About Me</h2>
+                    <h2 class="gsap-about-text">The Creator behind the lens</h2>
                     <div class="gsap-about-text">
-                        <p>
-                            Hi, I’m Lia, and I’ve been creating content since I was 14. What started as pure intuition and a lot of ADHD-driven creativity quickly grew into a community of over 250,000 followers.
+                        <p class="quote-text">
+                            "I don’t just create content. I create connection."
                         </p>
                         <p>
-                            Over the past 1.5 years, I’ve turned that passion into professional UGC, combining nearly a decade of digital experience with my background in Psychology.
+                            Hi, I’m Lia. I’ve been creating content since I was 14. What started as pure intuition and a lot of creative energy quickly grew into a loyal community of over 250,000 followers.
                         </p>
                         <p>
-                            I don’t just create content. I create connection. By understanding how people think, feel, and scroll, I produce scroll-stopping UGC that feels authentic, relatable, and impactful. Every piece of content is designed to capture attention, spark emotion, and build genuine trust with your audience.
-                        </p>
-                        <p>
-                            What I love most is the creative process. I enjoy turning a brand’s vision into engaging content that feels human, natural, and true to its values while still driving real results.
+                            Over the past 1.5 years, I’ve turned that passion into professional UGC, combining nearly a decade of digital experience with my background in Psychology. By understanding how people think, feel, and scroll, I produce content that feels authentic, relatable, and deeply impactful.
                         </p>
                     </div>
+
+                    <!-- 3 Feature Spalten anstelle des letzten Absatzes -->
+                    <div class="about-features gsap-about-text">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-brain"></i>
+                            <h4>Psychology-Driven Content</h4>
+                            <p>Leveraging a decade of study to craft deep engagement.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-video"></i>
+                            <h4>Authentic UGC Creation</h4>
+                            <p>Real human stories that build genuine trust.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <h4>Strategic Brand Narratives</h4>
+                            <p>Campaigns that align with values and deliver measurable results.</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -657,21 +969,25 @@
     <!-- BRANDS SECTION -->
     <section id="trusted" class="brands">
         <div class="container">
-            <h3>Trusted by brands including</h3>
+            <h3 class="gsap-brands">Trusted by brands including</h3>
             <div class="brand-list gsap-brands">
-                <img src="anualogo.png" alt="Anua" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Anua</span>')">
-                <img src="batistelogo.png" alt="Batiste" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Batiste</span>')">
-                <img src="boltlogo.png" alt="Bolt" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Bolt</span>')">
-                <img src="emmalogo.png" alt="Emma" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Emma</span>')">
-                <img src="ewzlogo.png" alt="EWZ" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>EWZ</span>')">
-                <img src="halaralogo.png" alt="Halara" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Halara</span>')">
-                <img src="herologo.png" alt="Hero Cosmetics" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Hero Cosmetics</span>')">
-                <img src="ifolorlogo.png" alt="Ifolor" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Ifolor</span>')">
-                <img src="jevaanilogo.png" alt="Jevaani" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Jevaani</span>')">
-                <img src="Pflegewegweiserlogo.png" alt="Pflegewegweiser" class="brand-logo large" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Pflegewegweiser</span>')">
-                <img src="Spiriglogo.png" alt="Spirig" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Spirig</span>')">
-                <img src="studyflashlogo.png" alt="Studyflash" class="brand-logo large" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Studyflash</span>')">
-                <img src="veluralogo.png" alt="Velura" class="brand-logo" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span class=\'brand-pill\'>Velura</span>')">
+                <img src="anualogo.png" alt="Anua" class="brand-logo" style="--scale: 0.9;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Anua'">
+                <img src="batistelogo.png" alt="Batiste" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Batiste'">
+                <img src="boltlogo.png" alt="Bolt" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Bolt'">
+                <img src="emmalogo.png" alt="Emma" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Emma'">
+                <img src="ewzlogo.png" alt="EWZ" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=EWZ'">
+                <img src="halaralogo.png" alt="Halara" class="brand-logo" style="--scale: 1.8;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Halara'">
+                <img src="herologo.png" alt="Hero Cosmetics" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Hero'">
+                <img src="ifolorlogo.png" alt="Ifolor" class="brand-logo" style="--scale: 1.75;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Ifolor'">
+                <img src="jevaanilogo.png" alt="Jevaani" class="brand-logo" style="--scale: 1.75;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Jevaani'">
+                <img src="Pflegewegweiserlogo.png" alt="Pflegewegweiser" class="brand-logo large" style="--scale: 1.5;" onerror="this.src='https://placehold.co/160x50/f4f0ef/5a5258?text=Pflegewegweiser'">
+                <img src="Spiriglogo.png" alt="Spirig" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Spirig'">
+                <img src="studyflashlogo.png" alt="Studyflash" class="brand-logo large" style="--scale: 1.5;" onerror="this.src='https://placehold.co/160x50/f4f0ef/5a5258?text=Studyflash'">
+                <img src="veluralogo.png" alt="Velura" class="brand-logo" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=Velura'">
+                <img src="burgerkinglogo.png" alt="Burger King" class="brand-logo" style="--scale: 1.75;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=BurgerKing'">
+                <img src="simplyhairlogo.png" alt="Simply Hair" class="brand-logo" style="--scale: 1.2;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=SimplyHair'">
+                <img src="johnfriedalogo.png" alt="John Frieda" class="brand-logo" style="--scale: 1.75;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=JohnFrieda'">
+                <img src="bekindlogo.png" alt="BE-KIND" class="brand-logo" style="--scale: 2.0;" onerror="this.src='https://placehold.co/120x40/f4f0ef/5a5258?text=BeKind'">
             </div>
         </div>
     </section>
@@ -680,171 +996,163 @@
     <section id="videos" class="projects section-padding">
         <div class="container">
             <div class="projects-header">
-                <h2>Recent Projects</h2>
-                <p style="opacity: 0.6; margin-top: 10px;">Click a video to watch in full screen with sound</p>
+                <h2>Selected Works</h2>
+                <p>Click any video to watch in full screen with sound</p>
             </div>
             
             <!-- Category 1: Recent Collaborations -->
             <div class="project-category">
                 <h4 class="category-title">Recent Collaborations</h4>
                 <div class="projects-grid">
-                    <div class="project-card gsap-project-card" data-video-src="Bolt.mov">
+                    
+                    <div class="project-card" data-video-src="Burgerking.mov">
                         <div class="video-wrapper">
-                            <video src="Bolt.mov#t=0.5" playsinline preload="metadata"></video>
+                            <video src="Burgerking.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="project-caption"><h4>Burger King</h4></div>
+                    </div>
+                    
+                    <div class="project-card" data-video-src="leichtaufgeraeumt.mov">
+                        <div class="video-wrapper">
+                            <video src="leichtaufgeraeumt.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="project-caption"><h4>Leicht Aufgeräumt</h4></div>
+                    </div>
+                    
+                    <div class="project-card" data-video-src="bekind.mov">
+                        <div class="video-wrapper">
+                            <video src="bekind.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="project-caption"><h4>BE-KIND</h4></div>
+                    </div>
+                    
+                    <div class="project-card" data-video-src="viplounge.mov">
+                        <div class="video-wrapper">
+                            <video src="viplounge.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="project-caption"><h4>viplounge (DE)</h4></div>
+                    </div>
+                    
+                    <div class="project-card" data-video-src="simplyhair.mov">
+                        <div class="video-wrapper">
+                            <video src="simplyhair.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="project-caption"><h4>Simplyhair</h4></div>
+                    </div>
+                    
+                    <div class="project-card" data-video-src="ewz.mov">
+                        <div class="video-wrapper">
+                            <video src="ewz.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="project-caption"><h4>EWZ</h4></div>
+                    </div>
+
+                    <div class="project-card" data-video-src="Bolt.mov">
+                        <div class="video-wrapper">
+                            <video src="Bolt.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Bolt</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="pflegewegweiser.mov">
+                    
+                    <div class="project-card" data-video-src="pflegewegweiser.mov">
                         <div class="video-wrapper">
-                            <video src="pflegewegweiser.mov#t=0.5" playsinline preload="metadata"></video>
+                            <video src="pflegewegweiser.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Pflegewegweiser</h4></div>
                     </div>
                     
-                    <div class="project-card gsap-project-card" data-video-src="Firmoo.mov">
+                    <div class="project-card" data-video-src="Firmoo.mov">
                         <div class="video-wrapper">
-                            <video src="Firmoo.mov#t=0.5" playsinline preload="metadata"></video>
+                            <video src="Firmoo.mov#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Capsula Anna</h4></div>
                     </div>
                     
-                    <div class="project-card gsap-project-card" data-video-src="haircare.MP4">
+                    <div class="project-card" data-video-src="haircare.MP4">
                         <div class="video-wrapper">
-                            <video src="haircare.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="haircare.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Batiste</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="ifolor.MP4">
+                    
+                    <div class="project-card" data-video-src="ifolor.MP4">
                         <div class="video-wrapper">
-                            <video src="ifolor.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="ifolor.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Ifolor</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="worklife.MP4">
+                    
+                    <div class="project-card" data-video-src="worklife.MP4">
                         <div class="video-wrapper">
-                            <video src="worklife.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="worklife.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Studyflash AI</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="anua.MP4">
+                    
+                    <div class="project-card" data-video-src="anua.MP4">
                         <div class="video-wrapper">
-                            <video src="anua.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="anua.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Anua (EN)</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="EWZ.MP4">
+                    
+                    <div class="project-card" data-video-src="emmaskissen.MP4">
                         <div class="video-wrapper">
-                            <video src="EWZ.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>EWZ</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="velura.mp4">
-                        <div class="video-wrapper">
-                            <video src="velura.mp4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Velura</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="halara.MP4">
-                        <div class="video-wrapper">
-                            <video src="halara.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Halara (DE)</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="chesapeakebay.MP4">
-                        <div class="video-wrapper">
-                            <video src="chesapeakebay.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Chesapeake bay</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="emmaskissen.MP4">
-                        <div class="video-wrapper">
-                            <video src="emmaskissen.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="emmaskissen.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Emmas Kissen</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="jevaani.MP4">
+                    
+                    <div class="project-card" data-video-src="omari21.MP4">
                         <div class="video-wrapper">
-                            <video src="jevaani.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Jevaani</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="omari21.MP4">
-                        <div class="video-wrapper">
-                            <video src="omari21.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="omari21.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Omari 21</h4></div>
                     </div>
-                    <div class="project-card gsap-project-card" data-video-src="mightypatches.MP4">
+                    
+                    <div class="project-card" data-video-src="mightypatches.MP4">
                         <div class="video-wrapper">
-                            <video src="mightypatches.MP4#t=0.5" playsinline preload="metadata"></video>
+                            <video src="mightypatches.MP4#t=0.5" playsinline preload="metadata" muted></video>
+                            <div class="play-indicator"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="project-caption"><h4>Mighty patches</h4></div>
                     </div>
+
                 </div>
             </div>
 
-            <!-- Category 2: Other Work -->
-            <div class="project-category">
-                <h4 class="category-title">Other Work</h4>
-                <div class="projects-grid">
-                    <div class="project-card gsap-project-card" data-video-src="airbrush.MP4">
-                        <div class="video-wrapper">
-                            <video src="airbrush.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Makeup</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="gymfit.MP4">
-                        <div class="video-wrapper">
-                            <video src="gymfit.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Gym outfit</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="date.MP4">
-                        <div class="video-wrapper">
-                            <video src="date.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Date night</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="grwm.MP4">
-                        <div class="video-wrapper">
-                            <video src="grwm.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>GRWM</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="skincare.MP4">
-                        <div class="video-wrapper">
-                            <video src="skincare.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Skincare</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="mentalhealth.MP4">
-                        <div class="video-wrapper">
-                            <video src="mentalhealth.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Mental health</h4></div>
-                    </div>
-                    <div class="project-card gsap-project-card" data-video-src="walkingpad.MP4">
-                        <div class="video-wrapper">
-                            <video src="walkingpad.MP4#t=0.5" playsinline preload="metadata"></video>
-                        </div>
-                        <div class="project-caption"><h4>Walking Pad</h4></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- RATES SECTION -->
     <section id="rates" class="rates section-padding">
         <div class="container">
-            <h2 class="gsap-rates">Rates</h2>
-            <div class="gsap-rates">
+            <div class="rates-content gsap-rates">
+                <h2>Rates</h2>
                 <p>
-                    My prices are tailored to your specific needs — such as content type, hooks & CTAs, number of videos, and usage rights.
+                    Every brand is unique. My pricing is tailored specifically to your campaign requirements, factoring in content formats, hook variations, specific CTAs, deliverables volume, and licensing usage.
                 </p>
                 <p>
-                    Please do not hesitate to reach out with your project details, and I’ll be happy to put together a personalized quote for you.
+                    Reach out with your project brief, and I will gladly provide a customized proposal and my full media kit.
                 </p>
+                <div style="margin-top: 2.5rem;">
+                    <a href="mailto:liadiotima.ugc@gmail.com" class="btn-primary">Request a Quote</a>
+                </div>
             </div>
         </div>
     </section>
@@ -852,7 +1160,7 @@
     <!-- VIDEO MODAL -->
     <div id="videoModal" class="video-modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
             <video id="modalVideoPlayer" controls playsinline>
                 <source src="" type="video/mp4">
                 Your browser does not support the video tag.
@@ -873,8 +1181,8 @@
             </div>
             
             <div class="footer-socials">
-                <a href="https://www.tiktok.com/@liadiotima.ugc" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/liadiotima.ugc/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@liadiotima.ugc" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/liadiotima.ugc/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
 
             <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Lia Diotima. All rights reserved.</p>
@@ -909,7 +1217,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                lenis.scrollTo(this.getAttribute('href'));
+                lenis.scrollTo(this.getAttribute('href'), { offset: -80 });
             });
         });
 
@@ -919,19 +1227,24 @@
         // --- Animations ---
         const tl = gsap.timeline();
         
-        // Hero
-        tl.from(".gsap-hero-text", {
-            y: 50,
+        // Redesigned Hero Animation
+        tl.from(".gsap-hero-top", {
+            y: -20,
             opacity: 0,
             duration: 1,
             stagger: 0.2,
             ease: "power3.out"
         })
-        .from(".hero-img", {
-            y: 100,
+        .from(".gsap-hero-title", {
+            y: 40,
             opacity: 0,
             duration: 1.2,
-            stagger: 0.3,
+            ease: "power3.out"
+        }, "-=0.5")
+        .from(".gsap-hero-img", {
+            y: 60,
+            opacity: 0,
+            duration: 1.5,
             ease: "power2.out"
         }, "-=0.8");
 
@@ -941,9 +1254,9 @@
                 trigger: ".about",
                 start: "top 80%",
             },
-            x: -30,
+            y: 40,
             opacity: 0,
-            duration: 1,
+            duration: 1.2,
             ease: "power3.out"
         });
 
@@ -955,37 +1268,21 @@
             y: 30,
             opacity: 0,
             duration: 1,
-            stagger: 0.1,
+            stagger: 0.15,
             ease: "power3.out"
         });
 
         // Brands 
-        gsap.from(".brand-logo", {
+        gsap.from(".gsap-brands", {
             scrollTrigger: {
                 trigger: ".brands",
-                start: "top 90%",
+                start: "top 85%",
             },
             y: 20,
             opacity: 0,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "back.out(1.7)"
-        });
-
-        // Project Animation
-        const projectGrids = document.querySelectorAll(".projects-grid");
-        projectGrids.forEach(grid => {
-            gsap.from(grid.querySelectorAll(".gsap-project-card"), {
-                scrollTrigger: {
-                    trigger: grid,
-                    start: "top 85%",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power3.out"
-            });
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out"
         });
 
         // Rates
@@ -997,7 +1294,6 @@
             y: 30,
             opacity: 0,
             duration: 1,
-            stagger: 0.2,
             ease: "power2.out"
         });
 
@@ -1024,8 +1320,10 @@
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
                 const videoSrc = card.getAttribute('data-video-src');
-                if (videoSrc) {
-                    modalVideo.src = videoSrc;
+                const cleanSrc = videoSrc ? videoSrc.split('#')[0] : '';
+                
+                if (cleanSrc) {
+                    modalVideo.src = cleanSrc;
                     modal.classList.add('active');
                     modalVideo.muted = false;
                     modalVideo.play().catch(e => console.log("Autoplay blocked:", e));
@@ -1037,8 +1335,10 @@
         // Close Modal Function
         function closeModal() {
             modal.classList.remove('active');
-            modalVideo.pause();
-            modalVideo.src = "";
+            setTimeout(() => {
+                modalVideo.pause();
+                modalVideo.src = "";
+            }, 400); // Wait for transition to finish
             lenis.start();
         }
 
