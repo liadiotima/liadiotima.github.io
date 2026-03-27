@@ -809,88 +809,88 @@
         }
 
         @media (max-width: 768px) {
-            .desktop-only { display: none !important; }
-            .mobile-only { display: block !important; }
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
 
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.7rem;
-                flex-wrap: wrap;
-            }
-            .section-padding { padding: 5rem 0; }
-            
-            /* HERO FIXES MOBILE - Keeping Desktop Alignments */
-            .hero {
-                padding-top: 100px; 
-                min-height: auto;
-            }
-            .hero-top-bar {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                margin-top: 0;
-                gap: 1.5rem;
-            }
-            .hero-subtitle { font-size: 0.9rem; }
-            .hero-tagline { font-size: 1.1rem; }
-            .btn-primary { padding: 1rem 2rem; font-size: 0.85rem; }
-            .social-btn { width: 45px; height: 45px; font-size: 1.1rem; }
+    .nav-links {
+        gap: 1.5rem;
+        font-size: 0.7rem;
+        flex-wrap: wrap;
+    }
+    
+    .section-padding { padding: 5rem 0; }
+    
+    /* --- MOBILE HERO ANPASSUNGEN --- */
+    .hero {
+        /* Premium UGC Creator weiter nach unten schieben */
+        padding-top: 150px; 
+        min-height: auto;
+        /* Verhindert seitliches Scrollen, wenn das Bild links rausragt */
+        overflow: hidden; 
+    }
 
-            /* Modern Editorial Mobile Layout */
-            .hero-lockup {
-                flex-direction: row; 
-                justify-content: flex-start; /* Image to the left edge */
-                gap: 0;
-                padding: 0;
-                transform: none; /* Reset transform */
-                margin-left: -2rem; /* Negates the container padding to touch the screen edge */
-            }
-            .hero-image-wrapper { 
-                height: 50vh; /* Bild bleibt schön gross im Zentrum */
-                margin: 0; 
-                z-index: 2;
-            } 
-            
-            .hero-title-part.mobile-only {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                margin-top: auto;
-                margin-bottom: auto;
-                left: 40%; /* Position text on the right next to the image */
-                margin-left: 0;
-                height: fit-content;
-                text-align: left;
-                z-index: 1; /* Editorial Look: Leicht im Hintergrund hinter dem Bild */
-                font-size: clamp(3rem, 14vw, 5rem); /* "in klein" */
-                text-transform: lowercase; /* "in klein" */
-                line-height: 0.9;
-            }
-            
-            /* Anpassungen Mobile About-Bereich */
-            .about-img-container { display: none; }
-            .about-text { padding-bottom: 4rem; }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .feature-item i { margin-bottom: 0.5rem; }
+    .hero-top-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 0;
+        gap: 1.5rem;
+    }
 
-            .category-title { justify-content: center; }
-            .category-title::after { display: none; }
-            
-            .brand-list { gap: 2rem; }
-            .brand-logo { height: calc(30px * var(--scale)); } 
-            .brand-logo.large { height: calc(60px * var(--scale)); }
-            
-            .rates-content { padding: 3rem 1.5rem; }
-            .rates h2 { font-size: 2.5rem; }
-            
-            .footer h2 { font-size: 2rem; }
-            .footer-email { font-size: 1.5rem; }
-        }
+    /* Bild & Titel Positionierung */
+    .hero-lockup {
+        flex-direction: row; 
+        justify-content: flex-start; /* Startet am linken Rand */
+        gap: 0;
+        padding: 0;
+        transform: none; 
+        /* Neutralisiert das Padding des Containers, um den Rand zu berühren */
+        margin-left: -2rem; 
+        width: calc(100% + 2rem);
+    }
 
+    .hero-image-wrapper { 
+        height: 55vh; /* Bildgröße auf Mobile */
+        margin: 0; 
+        z-index: 2;
+        display: flex;
+        align-items: flex-end;
+    } 
+
+    .hero-image-wrapper img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        /* Erzwingt, dass das Bild innerhalb des Wrappers ganz links klebt */
+        object-position: left bottom; 
+    }
+    
+    .hero-title-part.mobile-only {
+        position: absolute;
+        top: 30%; 
+        left: 45%; /* Titel rechts neben dem Bild */
+        margin-left: 0;
+        height: fit-content;
+        text-align: left;
+        z-index: 1; 
+        font-size: clamp(3rem, 15vw, 5rem); 
+        text-transform: lowercase; 
+        line-height: 0.85;
+    }
+    
+    /* --- Restliche Mobile Fixes (About, Brands etc.) --- */
+    .about-img-container { display: none; }
+    .about-text { padding-bottom: 4rem; }
+    .about-features { grid-template-columns: 1fr; gap: 2rem; }
+    .category-title { justify-content: center; }
+    .category-title::after { display: none; }
+    .brand-list { gap: 2rem; }
+    .brand-logo { height: calc(30px * var(--scale)); } 
+    .brand-logo.large { height: calc(60px * var(--scale)); }
+    .rates h2 { font-size: 2.5rem; }
+    .footer h2 { font-size: 2rem; }
+    .footer-email { font-size: 1.5rem; }
+}
         @media (max-width: 480px) {
             .hero-image-wrapper { 
                 height: 45vh; 
